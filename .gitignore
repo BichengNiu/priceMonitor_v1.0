@@ -1,0 +1,20 @@
+# Python and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.coverage
+htmlcov/
+
+# Local virtual environments and build caches
+.venv/
+.build-venv/
+
+# Temporary/editor files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~

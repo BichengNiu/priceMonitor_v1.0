@@ -1,0 +1,1999 @@
+2026-08-12T00:03:00 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T00:03:01 INFO moet_price_monitor.service: Source update detected: previous=none current=2026-08-10T00:00:00+04:00
+2026-08-12T00:03:04 ERROR moet_price_monitor: Price monitor run failed
+Traceback (most recent call last):
+  File "C:\Users\NIU\Desktop\webscrapy\moet-price-monitor\run_monitor.py", line 50, in main
+    result = monitor.run_once()
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NIU\Desktop\webscrapy\moet-price-monitor\moet_price_monitor\service.py", line 60, in run_once
+    snapshot = self.client.fetch_snapshot()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NIU\Desktop\webscrapy\moet-price-monitor\moet_price_monitor\client.py", line 144, in fetch_snapshot
+    raise SourceDataError(
+moet_price_monitor.client.SourceDataError: Source contains duplicate productId + branchId identity: '10905' + '463'
+2026-08-12T00:10:50 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T00:10:52 INFO moet_price_monitor.service: Source update detected: previous=none current=2026-08-10T00:00:00+04:00
+2026-08-12T00:10:59 ERROR moet_price_monitor: Price monitor run failed
+Traceback (most recent call last):
+  File "C:\Users\NIU\Desktop\webscrapy\moet-price-monitor\run_monitor.py", line 50, in main
+    result = monitor.run_once()
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NIU\Desktop\webscrapy\moet-price-monitor\moet_price_monitor\service.py", line 60, in run_once
+    snapshot = self.client.fetch_snapshot()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NIU\Desktop\webscrapy\moet-price-monitor\moet_price_monitor\client.py", line 135, in fetch_snapshot
+    raise SourceDataError(
+moet_price_monitor.client.SourceDataError: MOET cumulative page did not contain the complete snapshot: received 920, declared 205920
+2026-08-12T00:12:15 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T00:12:18 INFO moet_price_monitor.service: Source update detected: previous=none current=2026-08-10T00:00:00+04:00
+2026-08-12T00:12:31 ERROR moet_price_monitor: Price monitor run failed
+Traceback (most recent call last):
+  File "C:\Users\NIU\Desktop\webscrapy\moet-price-monitor\run_monitor.py", line 50, in main
+    result = monitor.run_once()
+             ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NIU\Desktop\webscrapy\moet-price-monitor\moet_price_monitor\service.py", line 60, in run_once
+    snapshot = self.client.fetch_snapshot()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NIU\Desktop\webscrapy\moet-price-monitor\moet_price_monitor\client.py", line 145, in fetch_snapshot
+    raise SourceDataError(
+moet_price_monitor.client.SourceDataError: Source contains duplicate productId + branchId identity: '11089' + '223'
+2026-08-12T00:14:27 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T00:14:28 INFO moet_price_monitor.service: Source update detected: previous=none current=2026-08-10T00:00:00+04:00
+2026-08-12T00:14:43 WARNING moet_price_monitor.client: Removed 1 exact duplicate source rows from 205920 raw records
+2026-08-12T00:15:01 INFO moet_price_monitor.service: Committed source version 2026-08-10T00:00:00+04:00: fetched=205919 appended=205919
+2026-08-12T00:15:01 INFO moet_price_monitor: Update processed: source=2026-08-10T00:00:00+04:00, fetched=205919, appended=205919
+2026-08-12T00:15:33 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T00:15:41 INFO moet_price_monitor.service: No update: source version remains 2026-08-10T00:00:00+04:00
+2026-08-12T00:15:41 INFO moet_price_monitor: No update: source=2026-08-10T00:00:00+04:00
+2026-08-12T00:18:53 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T00:19:00 INFO moet_price_monitor.service: No update: source version remains 2026-08-10T00:00:00+04:00
+2026-08-12T00:19:00 INFO moet_price_monitor: No update: source=2026-08-10T00:00:00+04:00
+2026-08-12T00:19:40 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T00:19:48 INFO moet_price_monitor.service: No update: source version remains 2026-08-10T00:00:00+04:00
+2026-08-12T00:19:48 INFO moet_price_monitor: No update: source=2026-08-10T00:00:00+04:00
+2026-08-12T01:19:41 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T01:19:49 INFO moet_price_monitor.service: No update: source version remains 2026-08-10T00:00:00+04:00
+2026-08-12T01:19:49 INFO moet_price_monitor: No update: source=2026-08-10T00:00:00+04:00
+2026-08-12T02:19:41 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T02:19:48 INFO moet_price_monitor.service: No update: source version remains 2026-08-10T00:00:00+04:00
+2026-08-12T02:19:48 INFO moet_price_monitor: No update: source=2026-08-10T00:00:00+04:00
+2026-08-12T03:19:41 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T03:19:48 INFO moet_price_monitor.service: No update: source version remains 2026-08-10T00:00:00+04:00
+2026-08-12T03:19:48 INFO moet_price_monitor: No update: source=2026-08-10T00:00:00+04:00
+2026-08-12T04:19:41 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T04:19:53 INFO moet_price_monitor.service: No update: source version remains 2026-08-10T00:00:00+04:00
+2026-08-12T04:19:53 INFO moet_price_monitor: No update: source=2026-08-10T00:00:00+04:00
+2026-08-12T05:19:41 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T05:19:48 INFO moet_price_monitor.service: Source update detected: previous=2026-08-10T00:00:00+04:00 current=2026-08-11T00:00:00+04:00
+2026-08-12T05:20:25 INFO moet_price_monitor.service: Committed source version 2026-08-11T00:00:00+04:00: fetched=205924 appended=1983
+2026-08-12T05:20:25 INFO moet_price_monitor: Update processed: source=2026-08-11T00:00:00+04:00, fetched=205924, appended=1983
+2026-08-12T06:19:41 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T06:19:49 INFO moet_price_monitor.service: No update: source version remains 2026-08-11T00:00:00+04:00
+2026-08-12T06:19:49 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-12T07:19:41 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T07:19:49 INFO moet_price_monitor.service: No update: source version remains 2026-08-11T00:00:00+04:00
+2026-08-12T07:19:49 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-12T19:19:57 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T19:20:04 INFO moet_price_monitor.service: No update: source version remains 2026-08-11T00:00:00+04:00
+2026-08-12T19:20:04 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-12T19:23:54 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T19:24:11 INFO moet_price_monitor.service: Migrated legacy change history into 411843 panel observations
+2026-08-12T19:24:17 WARNING moet_price_monitor.client: HTTP attempt 1/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: HTTPSConnectionPool(host='www.moet.gov.ae', port=443): Max retries exceeded with url: /en/essential-goods-prices-platform (Caused by ProxyError('Unable to connect to proxy', NewConnectionError("HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。")))
+2026-08-12T19:24:19 WARNING moet_price_monitor.client: HTTP attempt 2/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: HTTPSConnectionPool(host='www.moet.gov.ae', port=443): Max retries exceeded with url: /en/essential-goods-prices-platform (Caused by ProxyError('Unable to connect to proxy', NewConnectionError("HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。")))
+2026-08-12T19:24:21 WARNING moet_price_monitor.client: HTTP attempt 3/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: HTTPSConnectionPool(host='www.moet.gov.ae', port=443): Max retries exceeded with url: /en/essential-goods-prices-platform (Caused by ProxyError('Unable to connect to proxy', NewConnectionError("HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。")))
+2026-08-12T19:24:21 ERROR moet_price_monitor: Price monitor run failed
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 204, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 774, in urlopen
+    self._prepare_proxy(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1055, in _prepare_proxy
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 759, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 219, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+The above exception was the direct cause of the following exception:
+
+urllib3.exceptions.ProxyError: ('Unable to connect to proxy', NewConnectionError("HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\retry.py", line 543, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.moet.gov.ae', port=443): Max retries exceeded with url: /en/essential-goods-prices-platform (Caused by ProxyError('Unable to connect to proxy', NewConnectionError("HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。")))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\client.py", line 199, in _get
+    response = self.session.get(url, timeout=self.settings.timeout, **kwargs)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\sessions.py", line 671, in get
+    return self.request("GET", url, params=params, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\adapters.py", line 723, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPSConnectionPool(host='www.moet.gov.ae', port=443): Max retries exceeded with url: /en/essential-goods-prices-platform (Caused by ProxyError('Unable to connect to proxy', NewConnectionError("HTTPSConnection(host='127.0.0.1', port=9): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。")))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\run_monitor.py", line 50, in main
+    result = monitor.run_once()
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\service.py", line 50, in run_once
+    source_version = self.client.fetch_source_updated_at()
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\client.py", line 100, in fetch_source_updated_at
+    response = self._get(self.settings.source_url)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\client.py", line 220, in _get
+    raise SourceDataError(
+        f"HTTP request failed after {self.settings.max_attempts} attempts: {url}"
+    ) from last_error
+moet_price_monitor.client.SourceDataError: HTTP request failed after 3 attempts: https://www.moet.gov.ae/en/essential-goods-prices-platform
+2026-08-12T19:24:30 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T19:24:38 INFO moet_price_monitor.service: No update: source version remains 2026-08-11T00:00:00+04:00
+2026-08-12T19:24:38 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-12T19:59:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-12T19:59:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-12T19:59:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T00:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T00:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T00:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T09:48:19 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T09:48:37 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T09:48:37 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T10:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T10:05:32 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T10:05:32 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T11:05:14 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T11:05:32 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T11:05:32 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T12:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T12:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T12:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T13:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T13:05:32 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T13:05:32 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T14:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T14:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T14:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T15:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T15:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T15:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T16:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T16:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T16:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T17:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T17:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T17:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T18:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T18:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T18:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T19:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T19:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T19:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T20:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T20:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T20:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T21:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T21:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T21:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T22:05:00 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T22:05:09 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T22:05:09 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-13T23:05:00 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-13T23:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-13T23:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T00:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T00:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T00:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T01:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T01:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T01:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T02:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T02:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T02:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T03:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T03:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T03:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T04:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T04:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T04:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T05:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T05:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T05:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T06:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T06:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T06:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T07:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T07:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T07:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T08:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T08:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T08:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T09:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T09:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T09:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T10:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T10:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T10:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T11:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T11:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T11:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T12:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T12:05:29 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T12:05:29 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T13:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T13:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T13:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T14:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T14:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T14:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T15:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T15:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T15:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T16:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T16:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T16:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T17:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T17:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T17:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T18:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T18:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T18:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T19:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T19:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T19:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T20:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T20:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T20:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T21:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T21:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T21:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T22:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T22:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T22:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-14T23:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-14T23:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-14T23:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T00:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T00:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T00:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T01:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T01:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T01:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T02:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T02:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T02:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T03:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T03:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T03:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T04:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T04:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T04:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T05:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T05:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T05:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T06:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T06:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T06:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T07:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T07:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T07:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T08:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T08:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T08:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T09:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T09:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T09:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T10:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T10:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T10:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T11:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T11:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T11:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T12:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T12:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T12:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T13:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T13:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T13:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T14:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T14:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T14:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T15:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T15:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T15:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T16:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T16:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T16:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T17:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T17:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T17:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T18:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T18:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T18:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T19:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T19:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T19:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T20:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T20:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T20:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T21:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T21:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T21:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T22:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T22:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T22:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-15T23:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-15T23:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-15T23:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T00:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T00:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T00:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T01:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T01:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T01:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T02:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T02:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T02:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T03:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T03:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T03:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T04:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T04:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T04:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T05:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T05:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T05:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T06:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T06:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T06:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T07:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T07:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T07:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T08:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T08:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T08:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T09:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T09:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T09:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T10:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T10:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T10:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T11:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T11:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T11:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T12:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T12:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T12:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T13:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T13:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T13:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T14:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T14:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T14:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T15:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T15:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T15:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T16:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T16:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T16:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T17:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T17:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T17:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T18:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T18:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T18:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T19:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T19:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T19:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T20:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T20:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T20:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T21:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T21:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T21:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T22:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T22:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T22:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-16T23:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-16T23:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-16T23:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T00:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T00:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T00:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T01:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T01:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T01:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T02:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T02:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T02:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T03:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T03:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T03:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T04:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T04:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T04:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T05:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T05:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T05:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T06:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T06:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T06:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T07:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T07:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T07:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T08:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T08:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T08:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T09:16:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T09:16:29 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T09:16:29 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T10:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T10:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T10:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T12:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T12:05:34 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T12:05:34 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T13:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T13:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T13:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T14:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T14:05:32 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T14:05:32 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T16:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T17:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T17:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T17:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T18:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T18:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T18:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T19:05:57 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T19:06:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T19:06:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T20:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T20:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T20:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T21:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T21:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T21:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T22:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T22:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T22:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-17T23:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-17T23:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-17T23:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T00:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T00:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T00:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T01:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T01:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T01:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T02:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T02:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T02:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T03:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T03:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T03:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T04:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T04:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T04:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T05:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T05:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T05:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T06:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T06:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T06:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T07:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T07:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T07:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T08:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T08:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T08:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T09:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T09:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T09:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T10:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T10:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T10:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T11:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T11:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T11:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T12:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T12:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T12:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T13:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T13:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T13:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T14:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T14:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T14:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T15:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T15:05:21 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T15:05:21 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T16:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T16:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T16:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T17:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T17:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T17:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T18:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T18:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T18:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T19:19:59 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T19:21:52 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T19:21:52 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T20:05:30 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T20:06:08 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T20:06:08 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T21:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T21:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T21:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T22:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T22:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T22:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-18T23:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-18T23:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-18T23:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T00:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T00:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T00:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T01:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T01:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T01:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T02:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T02:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T02:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T03:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T03:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T03:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T04:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T04:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T04:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T05:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T05:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T05:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T06:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T06:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T06:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T07:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T07:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T07:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T08:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T08:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T08:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T09:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T09:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T09:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T11:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T11:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T11:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T12:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T12:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T12:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T13:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T13:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T13:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T14:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T14:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T14:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T15:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T15:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T15:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T16:05:26 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T16:06:36 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T16:06:36 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T17:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T17:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T17:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T18:05:30 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T18:05:41 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T18:05:41 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T19:05:09 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T19:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T19:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T20:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T20:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T20:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T21:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T21:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T21:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T22:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T22:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T22:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-19T23:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-19T23:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-19T23:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T00:05:42 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T00:06:08 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T00:06:08 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T01:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T01:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T01:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T02:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T02:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T02:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T03:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T03:05:15 WARNING moet_price_monitor.client: HTTP attempt 1/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2026-08-20T03:05:16 WARNING moet_price_monitor.client: HTTP attempt 2/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2026-08-20T03:05:17 WARNING moet_price_monitor.client: HTTP attempt 3/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2026-08-20T03:05:17 ERROR moet_price_monitor: Price monitor run failed
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+        sock=sock,
+    ...<14 lines>...
+        assert_fingerprint=self.assert_fingerprint,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+        sock=sock,
+    ...<8 lines>...
+        tls_in_tls=tls_in_tls,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 433, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 477, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+        sock=sock,
+    ...<14 lines>...
+        assert_fingerprint=self.assert_fingerprint,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+        sock=sock,
+    ...<8 lines>...
+        tls_in_tls=tls_in_tls,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 433, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 477, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\client.py", line 199, in _get
+    response = self.session.get(url, timeout=self.settings.timeout, **kwargs)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\sessions.py", line 671, in get
+    return self.request("GET", url, params=params, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\run_monitor.py", line 42, in main
+    result = monitor.run_once()
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\service.py", line 47, in run_once
+    source_version = self.client.fetch_source_updated_at()
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\client.py", line 100, in fetch_source_updated_at
+    response = self._get(self.settings.source_url)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\client.py", line 220, in _get
+    raise SourceDataError(
+        f"HTTP request failed after {self.settings.max_attempts} attempts: {url}"
+    ) from last_error
+moet_price_monitor.client.SourceDataError: HTTP request failed after 3 attempts: https://www.moet.gov.ae/en/essential-goods-prices-platform
+2026-08-20T04:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T04:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T04:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T05:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T05:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T05:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T06:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T06:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T06:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T07:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T07:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T07:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T08:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T08:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T08:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T09:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T09:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T09:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T10:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T10:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T10:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T11:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T11:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T11:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T12:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T12:05:33 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T12:05:33 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T13:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T13:05:32 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T13:05:32 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T14:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T14:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T14:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T15:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T15:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T15:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T16:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T16:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T16:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T17:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T17:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T17:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T18:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T18:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T18:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T19:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T19:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T19:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T20:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T20:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T20:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T21:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T21:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T21:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T22:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T22:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T22:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-20T23:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-20T23:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-20T23:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T00:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T00:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T00:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T01:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T01:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T01:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T02:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T02:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T02:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T03:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T03:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T03:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T04:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T04:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T04:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T05:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T05:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T05:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T06:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T06:05:11 WARNING moet_price_monitor.client: HTTP attempt 1/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2026-08-21T06:05:12 WARNING moet_price_monitor.client: HTTP attempt 2/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2026-08-21T06:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T06:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T07:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T07:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T07:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T08:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T08:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T08:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T09:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T09:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T09:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T10:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T10:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T10:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T11:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T11:05:25 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T11:05:25 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T12:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T12:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T12:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T13:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T13:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T13:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T14:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T14:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T14:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T15:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T15:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T15:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T16:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T16:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T16:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T17:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T17:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T17:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T18:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T18:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T18:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T19:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T19:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T19:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T20:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T20:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T20:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T21:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T21:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T21:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T22:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T22:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T22:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-21T23:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-21T23:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-21T23:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T00:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T00:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T00:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T01:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T01:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T01:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T02:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T02:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T02:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T03:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T03:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T03:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T04:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T04:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T04:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T05:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T05:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T05:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T06:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T06:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T06:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T07:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T07:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T07:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T08:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T08:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T08:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T09:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T09:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T09:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T10:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T10:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T10:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T11:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T11:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T11:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T12:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T12:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T12:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T13:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T13:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T13:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T14:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T14:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T14:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T15:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T15:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T15:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T16:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T16:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T16:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T17:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T17:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T17:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T18:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T18:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T18:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T19:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T19:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T19:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T20:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T20:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T20:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T21:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T21:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T21:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T22:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T22:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T22:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-22T23:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-22T23:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-22T23:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T00:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T00:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T00:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T01:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T01:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T01:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T02:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T02:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T02:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T03:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T03:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T03:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T04:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T04:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T04:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T05:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T05:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T05:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T06:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T06:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T06:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T07:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T07:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T07:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T08:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T08:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T08:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T09:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T09:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T09:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T10:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T10:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T10:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T11:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T11:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T11:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T12:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T12:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T12:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T13:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T13:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T13:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T14:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T14:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T14:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T15:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T15:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T15:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T16:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T16:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T16:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T17:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T17:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T17:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T18:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T18:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T18:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T19:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T19:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T19:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T20:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T20:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T20:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T21:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T21:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T21:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T22:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T22:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T22:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-23T23:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-23T23:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-23T23:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T00:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T00:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T00:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T01:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T01:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T01:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T02:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T02:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T02:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T03:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T03:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T03:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T04:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T04:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T04:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T05:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T05:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T05:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T06:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T06:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T06:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T07:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T07:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T07:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T08:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T08:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T08:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T09:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T09:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T09:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T10:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T10:05:21 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T10:05:21 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T11:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T11:05:31 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T11:05:31 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T12:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T12:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T12:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T13:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T13:05:24 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T13:05:24 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T14:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T14:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T14:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T15:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T15:05:34 WARNING moet_price_monitor.client: HTTP attempt 1/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: HTTPSConnectionPool(host='www.moet.gov.ae', port=443): Max retries exceeded with url: /en/essential-goods-prices-platform (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.moet.gov.ae', port=443) at 0x23cf048c6e0>, 'Connection to www.moet.gov.ae timed out. (connect timeout=10.0)'))
+2026-08-24T15:05:45 WARNING moet_price_monitor.client: HTTP attempt 2/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: HTTPSConnectionPool(host='www.moet.gov.ae', port=443): Max retries exceeded with url: /en/essential-goods-prices-platform (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.moet.gov.ae', port=443) at 0x23cf04720d0>, 'Connection to www.moet.gov.ae timed out. (connect timeout=10.0)'))
+2026-08-24T17:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T17:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T17:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T18:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T18:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T18:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T19:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T19:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T19:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T20:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T20:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T20:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T21:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T21:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T21:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T22:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T22:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T22:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-24T23:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-24T23:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-24T23:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T00:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T00:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T00:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T01:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T01:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T01:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T02:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T02:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T02:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T03:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T03:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T03:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T04:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T04:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T04:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T05:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T05:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T05:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T06:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T06:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T06:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T07:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T07:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T07:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T08:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T08:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T08:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T09:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T09:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T09:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T10:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T10:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T10:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T11:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T11:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T11:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T12:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T12:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T12:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T13:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T13:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T13:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T14:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T14:05:28 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T14:05:28 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T15:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T15:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T15:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T16:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T16:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T16:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T17:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T17:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T17:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T18:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T18:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T18:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T19:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T19:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T19:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T20:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T20:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T20:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T21:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T21:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T21:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T22:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T22:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T22:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-25T23:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-25T23:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-25T23:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T00:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T00:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T00:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T01:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T01:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T01:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T02:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T02:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T02:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T03:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T03:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T03:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T04:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T04:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T04:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T05:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T05:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T05:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T06:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T06:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T06:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T07:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T07:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T07:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T08:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T08:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T08:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T09:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T09:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T09:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T10:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T10:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T10:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T11:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T11:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T11:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T12:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T12:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T12:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T13:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T13:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T13:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T14:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T14:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T14:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T15:05:04 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T15:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T15:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T16:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T16:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T16:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T17:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T17:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T17:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T18:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T18:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T18:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T19:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T19:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T19:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T20:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T20:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T20:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T21:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T21:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T21:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T22:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T22:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T22:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-26T23:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-26T23:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-26T23:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T00:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T00:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T00:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T01:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T01:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T01:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T02:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T02:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T02:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T03:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T03:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T03:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T04:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T04:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T04:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T05:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T05:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T05:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T06:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T06:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T06:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T07:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T07:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T07:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T08:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T08:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T08:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T09:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T09:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T09:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T10:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T10:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T10:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T11:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T11:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T11:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T12:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T12:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T12:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T13:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T13:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T13:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T13:49:43 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T13:54:23 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T13:54:23 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T14:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T14:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T14:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T15:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T15:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T15:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T16:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T16:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T16:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T17:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T17:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T17:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T18:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T18:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T18:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T19:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T19:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T19:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T20:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T20:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T20:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T21:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T21:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T21:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T22:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T22:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T22:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-27T23:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-27T23:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-27T23:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T00:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T00:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T00:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T01:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T01:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T01:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T02:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T02:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T02:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T03:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T03:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T03:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T04:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T04:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T04:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T05:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T05:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T05:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T06:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T06:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T06:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T07:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T07:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T07:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T08:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T08:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T08:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T10:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T10:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T10:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T11:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T11:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T11:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T12:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T12:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T12:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T13:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T13:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T13:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T14:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T14:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T14:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T15:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T15:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T15:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T16:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T16:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T16:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T17:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T17:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T17:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T18:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T18:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T18:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T19:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T19:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T19:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T20:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T20:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T20:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T21:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T21:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T21:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T22:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T22:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T22:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-28T23:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-28T23:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-28T23:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T00:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T00:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T00:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T01:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T01:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T01:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T02:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T02:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T02:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T03:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T03:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T03:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T04:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T04:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T04:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T05:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T05:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T05:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T06:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T06:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T06:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T07:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T07:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T07:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T08:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T08:05:10 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T08:05:10 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T09:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T09:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T09:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T10:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T10:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T10:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T11:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T11:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T11:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T12:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T12:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T12:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T13:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T13:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T13:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T14:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T14:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T14:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T15:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T15:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T15:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T16:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T16:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T16:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T17:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T17:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T17:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T18:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T18:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T18:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T19:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T19:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T19:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T20:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T20:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T20:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T21:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T21:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T21:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T22:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T22:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T22:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-29T23:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-29T23:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-29T23:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T00:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T00:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T00:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T01:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T01:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T01:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T02:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T02:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T02:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T03:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T03:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T03:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T04:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T04:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T04:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T05:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T05:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T05:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T06:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T06:05:15 WARNING moet_price_monitor.client: HTTP attempt 1/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2026-08-30T06:05:16 WARNING moet_price_monitor.client: HTTP attempt 2/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2026-08-30T06:05:17 WARNING moet_price_monitor.client: HTTP attempt 3/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2026-08-30T06:05:17 ERROR moet_price_monitor: Price monitor run failed
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+        sock=sock,
+    ...<14 lines>...
+        assert_fingerprint=self.assert_fingerprint,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+        sock=sock,
+    ...<8 lines>...
+        tls_in_tls=tls_in_tls,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 433, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 477, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1106, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+        sock=sock,
+    ...<14 lines>...
+        assert_fingerprint=self.assert_fingerprint,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+        sock=sock,
+    ...<8 lines>...
+        tls_in_tls=tls_in_tls,
+    )
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 433, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 477, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mfa\AppData\Local\Programs\Python\Python314\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\client.py", line 199, in _get
+    response = self.session.get(url, timeout=self.settings.timeout, **kwargs)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\sessions.py", line 671, in get
+    return self.request("GET", url, params=params, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\.venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mfa\Desktop\moet-price-monitor\run_monitor.py", line 42, in main
+    result = monitor.run_once()
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\service.py", line 47, in run_once
+    source_version = self.client.fetch_source_updated_at()
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\client.py", line 100, in fetch_source_updated_at
+    response = self._get(self.settings.source_url)
+  File "C:\Users\mfa\Desktop\moet-price-monitor\moet_price_monitor\client.py", line 220, in _get
+    raise SourceDataError(
+        f"HTTP request failed after {self.settings.max_attempts} attempts: {url}"
+    ) from last_error
+moet_price_monitor.client.SourceDataError: HTTP request failed after 3 attempts: https://www.moet.gov.ae/en/essential-goods-prices-platform
+2026-08-30T07:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T07:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T07:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T08:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T08:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T08:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T09:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T09:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T09:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T10:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T10:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T10:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T11:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T11:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T11:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T12:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T12:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T12:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T13:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T13:05:14 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T13:05:14 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T14:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T14:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T14:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T15:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T15:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T15:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T16:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T16:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T16:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T17:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T17:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T17:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T18:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T18:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T18:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T19:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T19:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T19:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T20:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T20:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T20:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T21:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T21:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T21:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T22:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T22:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T22:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-30T23:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-30T23:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-30T23:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T00:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T00:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T00:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T01:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T01:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T01:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T02:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T02:05:13 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T02:05:13 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T03:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T03:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T03:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T04:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T04:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T04:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T05:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T05:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T05:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T06:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T06:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T06:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T07:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T07:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T07:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T08:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T08:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T08:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T09:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T09:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T09:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T10:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T10:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T10:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T11:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T11:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T11:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T12:05:10 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T12:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T12:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T13:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T13:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T13:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T14:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T14:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T14:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T15:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T15:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T15:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T16:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T16:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T16:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T17:05:01 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T17:05:12 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T17:05:12 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-08-31T18:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-08-31T18:05:16 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-08-31T18:05:16 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-01T10:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-01T10:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-01T10:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-01T11:05:10 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-01T11:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-01T11:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-01T12:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-01T12:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-01T12:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-01T13:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-01T13:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-01T13:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-01T14:05:05 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-01T14:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-01T14:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-01T15:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-01T15:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-01T15:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-01T17:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-01T17:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-01T17:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T09:15:40 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T09:15:53 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T09:15:53 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T11:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T11:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T11:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T12:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T13:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T13:05:24 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T13:05:24 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T14:05:09 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T14:05:37 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T14:05:37 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T15:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T15:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T15:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T16:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T16:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T16:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T18:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T18:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T18:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T19:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T19:05:24 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T19:05:24 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T20:08:52 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T20:09:03 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T20:09:03 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T21:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T21:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T21:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T22:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T22:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T22:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-02T23:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-02T23:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-02T23:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T00:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T00:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T00:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T01:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T01:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T01:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T02:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T02:05:17 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T02:05:17 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T03:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T03:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T03:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T04:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T04:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T04:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T05:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T05:05:16 WARNING moet_price_monitor.client: HTTP attempt 1/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2026-09-03T05:05:17 WARNING moet_price_monitor.client: HTTP attempt 2/3 failed for https://www.moet.gov.ae/en/essential-goods-prices-platform: ('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None))
+2026-09-03T05:05:21 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T05:05:21 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T06:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T06:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T06:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T07:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T07:05:18 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T07:05:18 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T08:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T08:05:15 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T08:05:15 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T09:05:06 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T09:05:19 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T09:05:19 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T10:05:09 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T10:05:25 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T10:05:25 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T11:05:07 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T11:05:22 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T11:05:22 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T12:05:11 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T12:05:26 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T12:05:26 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T13:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T13:05:20 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T13:05:20 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T14:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T14:05:21 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T14:05:21 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T15:05:03 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T16:05:08 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T16:05:21 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T16:05:21 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-03T17:05:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-03T17:05:11 INFO moet_price_monitor.service: No update: publication date remains 2026-08-11
+2026-09-03T17:05:11 INFO moet_price_monitor: No update: source=2026-08-11T00:00:00+04:00
+2026-09-07T16:50:02 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-07T16:50:13 INFO moet_price_monitor.service: Source update detected: previous=2026-08-11T00:00:00+04:00 current=2026-09-06T00:00:00+04:00
+2026-09-07T16:50:59 INFO moet_price_monitor.service: Committed source version 2026-09-06T00:00:00+04:00: fetched=197617 appended=197617
+2026-09-07T16:50:59 INFO moet_price_monitor: Update processed: source=2026-09-06T00:00:00+04:00, fetched=197617, appended=197617
+2026-09-07T17:06:41 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-07T17:06:54 INFO moet_price_monitor.service: No update: publication date remains 2026-09-06
+2026-09-07T17:06:54 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\certifi\\tests\\__pycache__'
+2026-09-07T17:06:54 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.pytest_cache: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.pytest_cache\\v\\cache'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\moet_price_monitor\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\moet_price_monitor\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\tests\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\tests\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\certifi\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\certifi\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\charset_normalizer\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\charset_normalizer\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\colorama\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\colorama\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\idna\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\idna\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\iniconfig\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\iniconfig\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\packaging\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\packaging\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pluggy\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pluggy\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pygments\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pygments\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pytest\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pytest\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\requests\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\requests\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\urllib3\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\urllib3\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\_pytest\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\_pytest\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\_pytest\assertion\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\_pytest\\assertion\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\_pytest\config\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\_pytest\\config\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\_pytest\mark\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\_pytest\\mark\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\_pytest\_code\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\_pytest\\_code\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\_pytest\_io\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\_pytest\\_io\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\_pytest\_py\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\_pytest\\_py\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\urllib3\contrib\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\urllib3\\contrib\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\urllib3\http2\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\urllib3\\http2\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\urllib3\util\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\urllib3\\util\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\urllib3\contrib\emscripten\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\urllib3\\contrib\\emscripten\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pygments\filters\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pygments\\filters\\__pycache__'
+2026-09-07T17:06:56 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pygments\formatters\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pygments\\formatters\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pygments\lexers\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pygments\\lexers\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pygments\styles\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pygments\\styles\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\cachecontrol\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\cachecontrol\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\certifi\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\certifi\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\distlib\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\distlib\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\distro\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\distro\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\idna\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\idna\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\msgpack\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\msgpack\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\packaging\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\packaging\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\pkg_resources\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\pkg_resources\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\platformdirs\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\platformdirs\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\pygments\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\pyproject_hooks\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\pyproject_hooks\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\requests\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\requests\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\resolvelib\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\resolvelib\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\rich\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\rich\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\tomli\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\tomli\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\truststore\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\truststore\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\urllib3\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\urllib3\contrib\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\contrib\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\urllib3\packages\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\packages\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\urllib3\util\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\util\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\urllib3\packages\backports\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\packages\\backports\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\urllib3\contrib\_securetransport\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\urllib3\\contrib\\_securetransport\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\resolvelib\compat\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\resolvelib\\compat\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\pyproject_hooks\\_in_process\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\pygments\filters\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\filters\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\pygments\formatters\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\formatters\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\pygments\lexers\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\lexers\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\pygments\styles\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\pygments\\styles\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\packaging\licenses\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\packaging\\licenses\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_vendor\cachecontrol\caches\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_vendor\\cachecontrol\\caches\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\cli\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\cli\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\commands\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\commands\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\distributions\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\distributions\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\index\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\index\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\locations\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\locations\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\metadata\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\metadata\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\models\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\models\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\network\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\network\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\operations\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\operations\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\req\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\req\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\resolution\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\resolution\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\utils\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\utils\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\vcs\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\vcs\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\resolution\legacy\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\resolution\\legacy\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\resolution\resolvelib\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\resolution\\resolvelib\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\operations\build\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\operations\\build\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\operations\install\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\operations\\install\\__pycache__'
+2026-09-07T17:06:57 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\pip\_internal\metadata\importlib\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\pip\\_internal\\metadata\\importlib\\__pycache__'
+2026-09-07T17:06:58 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\packaging\licenses\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\packaging\\licenses\\__pycache__'
+2026-09-07T17:06:58 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\colorama\tests\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\colorama\\tests\\__pycache__'
+2026-09-07T17:06:58 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\charset_normalizer\cli\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\charset_normalizer\\cli\\__pycache__'
+2026-09-07T17:06:58 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.venv\Lib\site-packages\certifi\tests\__pycache__: [WinError 5] 拒绝访问。: 'D:\\programs\\moet-price-monitor\\.venv\\Lib\\site-packages\\certifi\\tests\\__pycache__'
+2026-09-07T17:06:58 INFO moet_price_monitor: No update: source=2026-09-06T00:00:00+04:00
+2026-09-07T17:09:38 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-09-07T17:09:53 INFO moet_price_monitor.service: No update: publication date remains 2026-09-06
+2026-09-07T17:10:06 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.build-venv: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\programs\\moet-price-monitor\\.build-venv\\Lib\\site-packages\\pip\\_vendor\\rich\\__pycache__\\scope.cpython-314.pyc'
+2026-09-07T17:10:07 INFO moet_price_monitor: No update: source=2026-09-06T00:00:00+04:00
