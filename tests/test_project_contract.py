@@ -77,6 +77,13 @@ def test_required_delivery_files_and_commands_are_present() -> None:
     }
 
     assert required <= {path.name for path in root.iterdir() if path.is_file()}
+    batch_files = [
+        path
+        for path in root.rglob("*.bat")
+        if ".build-venv" not in path.parts
+    ]
+    assert batch_files == [root / "run_monitor.bat"]
+    assert not (root / "release" / "install_task.ps1").exists()
 
     requirements = (root / "requirements.txt").read_text(encoding="utf-8")
     assert "requests>=2.34.2,<3" in requirements
@@ -87,13 +94,24 @@ def test_required_delivery_files_and_commands_are_present() -> None:
     readme = (root / "README.md").read_text(encoding="utf-8")
     for command in (
         ".\\build.ps1",
-        ".\\run_monitor.bat",
-        "python run_monitor.py --config config.toml",
-        ".\\release\\MoetPriceMonitor.exe --config .\\config.toml",
+        "run_monitor.bat",
         ".\\install_task.ps1",
     ):
         assert command in readme
+    assert "python run_monitor.py --config config.toml" not in readme
+    assert ".\\release\\MoetPriceMonitor.exe --config .\\config.toml" not in readme
+    batch = (root / "run_monitor.bat").read_text(encoding="utf-8")
+    assert 'if /I "%~1"=="--scheduled" set "SCHEDULED=1"' in batch
+    assert "if not defined SCHEDULED (" in batch
     assert __version__ == "1.0.0"
+
+
+def test_cli_requires_the_launcher_to_supply_a_config_path(capsys) -> None:
+    with pytest.raises(SystemExit) as raised:
+        run_monitor.main([])
+
+    assert raised.value.code == 2
+    assert "--config" in capsys.readouterr().err
 
 
 def test_cli_returns_zero_after_success(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -140,6 +158,8 @@ def test_success_cleanup_removes_owned_artifacts_but_keeps_runtime_files(
     data_dir = project_dir / "data"
     (project_dir / ".build").mkdir(parents=True)
     (project_dir / ".build-venv").mkdir()
+    (project_dir / ".venv" / "Lib" / "site-packages" / "package" / "__pycache__").mkdir(parents=True)
+    (project_dir / ".venv" / "Lib" / "site-packages" / "package" / "old.pyc").write_bytes(b"runtime")
     (project_dir / ".pytest-tmp-run").mkdir()
     (project_dir / "core" / "__pycache__").mkdir(parents=True)
     (project_dir / "core" / "cached.pyc").write_bytes(b"cache")
@@ -152,7 +172,9 @@ def test_success_cleanup_removes_owned_artifacts_but_keeps_runtime_files(
     _cleanup_temporary_artifacts(project_dir, data_dir)
 
     assert not (project_dir / ".build").exists()
-    assert not (project_dir / ".build-venv").exists()
+    assert (project_dir / ".build-venv").exists()
+    assert (project_dir / ".venv" / "Lib" / "site-packages" / "package" / "__pycache__").exists()
+    assert (project_dir / ".venv" / "Lib" / "site-packages" / "package" / "old.pyc").exists()
     assert not (project_dir / ".pytest-tmp-run").exists()
     assert not (project_dir / "core" / "__pycache__").exists()
     assert not (project_dir / "core" / "cached.pyc").exists()

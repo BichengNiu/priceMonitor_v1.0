@@ -71,10 +71,6 @@ class PriceRecord:
     def as_dict(self) -> dict[str, str]:
         return {field.name: getattr(self, field.name) for field in fields(self)}
 
-    @classmethod
-    def from_dict(cls, values: Mapping[str, object]) -> PriceRecord:
-        return cls(**{field.name: str(values.get(field.name, "")) for field in fields(cls)})
-
 
 class MoetClient:
     """Read and validate the source version and complete price snapshot."""

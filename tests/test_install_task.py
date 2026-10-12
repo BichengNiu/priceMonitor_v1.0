@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-def test_installer_uses_daily_ten_am_catchup_standalone_command() -> None:
+def test_installer_routes_daily_task_through_the_single_batch_entry() -> None:
     root = Path(__file__).resolve().parents[1]
     script = (root / "install_task.ps1").read_text(encoding="utf-8")
 
@@ -17,8 +17,10 @@ def test_installer_uses_daily_ten_am_catchup_standalone_command() -> None:
         "-MultipleInstances IgnoreNew",
         "-AllowStartIfOnBatteries",
         "-DontStopIfGoingOnBatteries",
-        "MoetPriceMonitor.exe",
-        "Resolve-MoetApplication",
+        "run_monitor.bat",
+        "--scheduled",
+        "/d /c",
+        "$env:ComSpec",
         "build.ps1",
         "-WorkingDirectory",
         "Register-ScheduledTask",
@@ -28,3 +30,6 @@ def test_installer_uses_daily_ten_am_catchup_standalone_command() -> None:
     assert ".venv" not in script
     assert "-AtLogOn" not in script
     assert "foreach ($hour in 0..23)" not in script
+    assert "-Execute $application.Executable" not in script
+    assert "StartsWith($ManagedTaskDescriptionPrefix)" not in script
+    assert "$existing.Description -eq $TaskDescription" in script

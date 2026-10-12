@@ -36,13 +36,7 @@ class PriceMonitor:
 
     def run_once(self) -> RunResult:
         LOGGER.info("Starting MOET essential-goods price check")
-        self.history.recover_if_needed()
-        migrated_count = self.history.migrate_existing_data_if_needed()
-        if migrated_count:
-            LOGGER.info(
-                "Migrated existing data across panel formats: %s observations",
-                migrated_count,
-            )
+        self.history.validate_current_store()
         last_version = self.history.last_source_updated_at()
         source_version = self.client.fetch_source_updated_at()
 

@@ -1,9 +1,7 @@
 #requires -Version 5.1
 
 [CmdletBinding()]
-param(
-    [string]$OutputDir = 'release'
-)
+param()
 
 $ErrorActionPreference = 'Stop'
 $projectDir = $PSScriptRoot
@@ -11,12 +9,7 @@ $buildEnvironment = Join-Path $projectDir '.build-venv'
 $buildPython = Join-Path $buildEnvironment 'Scripts\python.exe'
 $workDir = Join-Path $projectDir '.build'
 
-if ([System.IO.Path]::IsPathRooted($OutputDir)) {
-    $outputPath = [System.IO.Path]::GetFullPath($OutputDir)
-}
-else {
-    $outputPath = [System.IO.Path]::GetFullPath((Join-Path $projectDir $OutputDir))
-}
+$outputPath = Join-Path $projectDir 'release'
 
 if (-not (Get-Command py.exe -ErrorAction SilentlyContinue)) {
     throw 'Python launcher (py.exe) is required only to build the application.'
@@ -58,18 +51,6 @@ if ($LASTEXITCODE -ne 0) {
     throw 'PyInstaller failed to build the executable.'
 }
 
-$configDestination = Join-Path $outputPath 'config.toml'
-if (-not (Test-Path -LiteralPath $configDestination -PathType Leaf)) {
-    $configSource = Join-Path $projectDir 'config.toml'
-    if (-not (Test-Path -LiteralPath $configSource -PathType Leaf)) {
-        $configSource = Join-Path $projectDir 'config.example.toml'
-    }
-    Copy-Item -LiteralPath $configSource -Destination $configDestination
-}
-
-Copy-Item -LiteralPath (Join-Path $projectDir 'install_task.ps1') `
-    -Destination (Join-Path $outputPath 'install_task.ps1') -Force
-
 $executable = Join-Path $outputPath 'MoetPriceMonitor.exe'
 if (-not (Test-Path -LiteralPath $executable -PathType Leaf)) {
     throw "Build completed without creating $executable"
@@ -81,7 +62,5 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host ''
-Write-Host 'Standalone build complete.'
+Write-Host 'Build complete. Run the application using the root run_monitor.bat only.'
 Write-Host "Executable: $executable"
-Write-Host "Config:     $configDestination"
-Write-Host 'Install the scheduled task from this directory with .\install_task.ps1.'

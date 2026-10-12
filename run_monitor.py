@@ -26,12 +26,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument(
         "--config",
         type=Path,
-        default=None,
-        help="TOML configuration file (default: config.toml beside the program)",
+        required=True,
+        help="TOML configuration file supplied by the root BAT launcher",
     )
     args = parser.parse_args(argv)
-
-    config_path = args.config or (_application_dir() / "config.toml")
+    config_path = args.config
 
     try:
         settings = load_settings(config_path)
@@ -42,7 +41,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     _configure_logging(settings)
     try:
         client = MoetClient(settings)
-        history = HistoryStore(settings.data_dir, settings.source_url)
+        history = HistoryStore(settings.data_dir)
         monitor = PriceMonitor(client, history)
         result = monitor.run_once()
     except Exception:
@@ -63,7 +62,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     return 0
 
 
-def _configure_logging(settings: Settings) -> Path:
+def _configure_logging(settings: Settings) -> None:
     log_dir = settings.data_dir.parent / "logs"
     log_dir.mkdir(parents=True, exist_ok=True)
     log_path = log_dir / "monitor.log"
@@ -94,21 +93,11 @@ def _configure_logging(settings: Settings) -> Path:
 
     root.addHandler(console)
     root.addHandler(file_handler)
-    return log_path
-
-
-def _application_dir() -> Path:
-    """Return the directory containing the source script or frozen executable."""
-
-    if getattr(sys, "frozen", False):
-        return Path(sys.executable).resolve().parent
-    return Path(__file__).resolve().parent
 
 
 def _cleanup_temporary_artifacts(project_dir: Path, data_dir: Path) -> None:
     """Remove only temporary artifacts owned by this project after a success."""
 
-    active_environment = Path(sys.prefix).resolve()
     roots = {project_dir.resolve(), data_dir.resolve()}
     exact_files = {
         ".commit-transaction.json",
@@ -116,11 +105,12 @@ def _cleanup_temporary_artifacts(project_dir: Path, data_dir: Path) -> None:
         ".prices_panel.pending.duckdb",
         ".prices_panel.pending.duckdb.wal",
         ".prices_panel.pending.dta",
-        ".state.json.pending",
-        ".state.json.tmp",
     }
-    exact_directories = {".build", ".build-venv", ".venv", ".pytest_cache"}
-    blocked_directories: set[Path] = set()
+    exact_directories = {".build", ".pytest_cache"}
+    blocked_directories = {
+        (project_dir.resolve() / name).resolve()
+        for name in (".build-venv", ".venv")
+    }
 
     for root in roots:
         if not root.is_dir():
@@ -135,9 +125,6 @@ def _cleanup_temporary_artifacts(project_dir: Path, data_dir: Path) -> None:
     if project_dir.is_dir():
         for name in exact_directories:
             path = project_dir / name
-            if _is_active_environment(path, active_environment):
-                blocked_directories.add(path.resolve())
-                continue
             if not _remove_path(path):
                 blocked_directories.add(path.resolve())
 
@@ -147,16 +134,6 @@ def _cleanup_temporary_artifacts(project_dir: Path, data_dir: Path) -> None:
         for path in project_dir.rglob("*.pyc"):
             if not _is_under_any(path, blocked_directories):
                 _remove_file(path)
-
-
-def _is_active_environment(path: Path, active_environment: Path) -> bool:
-    """Do not remove the Python environment currently executing source mode."""
-
-    try:
-        active_environment.relative_to(path.resolve())
-    except ValueError:
-        return False
-    return True
 
 
 def _is_under_any(path: Path, roots: set[Path]) -> bool:

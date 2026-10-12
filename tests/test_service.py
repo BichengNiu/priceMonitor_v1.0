@@ -10,9 +10,6 @@ from core.history import HistoryStore
 from core.service import PriceMonitor
 
 
-SOURCE_URL = "https://www.moet.gov.ae/en/essential-goods-prices-platform"
-
-
 class FakeClient:
     def __init__(
         self,
@@ -35,10 +32,10 @@ class FakeClient:
         return self.snapshot
 
 
-def test_unchanged_version_skips_snapshot_and_csv(
+def test_unchanged_version_skips_snapshot_and_panel_write(
     tmp_path: Path, source_record: PriceRecord, fixed_now: datetime
 ) -> None:
-    history = HistoryStore(tmp_path, SOURCE_URL)
+    history = HistoryStore(tmp_path)
     initial = history.plan_observations([source_record], fixed_now)
     history.commit(initial, [source_record], fixed_now)
     panel_before = history.panel_path.read_bytes()
@@ -57,7 +54,7 @@ def test_unchanged_version_skips_snapshot_and_csv(
 def test_same_publication_date_is_collected_only_once(
     tmp_path: Path, source_record: PriceRecord, fixed_now: datetime
 ) -> None:
-    history = HistoryStore(tmp_path, SOURCE_URL)
+    history = HistoryStore(tmp_path)
     initial = history.plan_observations([source_record], fixed_now)
     history.commit(initial, [source_record], fixed_now)
     panel_before = history.panel_path.read_bytes()
@@ -77,7 +74,7 @@ def test_changed_version_fetches_and_commits_complete_snapshot(
     tmp_path: Path, source_record: PriceRecord, fixed_now: datetime
 ) -> None:
     source_version = fixed_now - timedelta(hours=1)
-    history = HistoryStore(tmp_path, SOURCE_URL)
+    history = HistoryStore(tmp_path)
     client = FakeClient(source_version, [source_record])
     monitor = PriceMonitor(client, history)
 
@@ -95,7 +92,7 @@ def test_failure_returns_without_committing_new_version(
 ) -> None:
     old_version = fixed_now - timedelta(days=2)
     new_version = fixed_now - timedelta(days=1)
-    history = HistoryStore(tmp_path, SOURCE_URL)
+    history = HistoryStore(tmp_path)
     initial = history.plan_observations([source_record], old_version)
     history.commit(initial, [source_record], old_version)
     panel_before = history.panel_path.read_bytes()

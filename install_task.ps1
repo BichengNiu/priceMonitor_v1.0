@@ -7,41 +7,26 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$ManagedTaskDescriptionPrefix = 'MOET_PRICE_MONITOR_'
-$TaskDescription = 'MOET_PRICE_MONITOR_V4 - Standalone executable; runs daily at 10:00 and catches up when available; collects one snapshot per publication date.'
+$TaskDescription = 'MOET_PRICE_MONITOR_V5 - Runs the root run_monitor.bat daily at 10:00; collects one snapshot per publication date.'
 
-function Resolve-MoetApplication {
-    [CmdletBinding()]
-    param()
-
+function Get-MoetTaskPaths {
     $root = $PSScriptRoot
-    $rootExecutable = Join-Path $root 'MoetPriceMonitor.exe'
-    $releaseDirectory = Join-Path $root 'release'
-    $releaseExecutable = Join-Path $releaseDirectory 'MoetPriceMonitor.exe'
-
-    if (Test-Path -LiteralPath $rootExecutable -PathType Leaf) {
-        $executablePath = $rootExecutable
-        $configPath = Join-Path $root 'config.toml'
+    $batchPath = Join-Path $root 'run_monitor.bat'
+    $executablePath = Join-Path $root 'release\MoetPriceMonitor.exe'
+    $configPath = Join-Path $root 'config.toml'
+    if (-not (Test-Path -LiteralPath $batchPath -PathType Leaf)) {
+        throw "The sole run entry was not found: $batchPath"
     }
-    elseif (Test-Path -LiteralPath $releaseExecutable -PathType Leaf) {
-        $executablePath = $releaseExecutable
-        $configPath = Join-Path $root 'config.toml'
-        if (-not (Test-Path -LiteralPath $configPath -PathType Leaf)) {
-            $configPath = Join-Path $releaseDirectory 'config.toml'
-        }
+    if (-not (Test-Path -LiteralPath $executablePath -PathType Leaf)) {
+        throw "Standalone worker not found. Run .\build.ps1 first: $executablePath"
     }
-    else {
-        throw "Standalone executable not found. Run .\build.ps1 first. Expected: $rootExecutable or $releaseExecutable"
-    }
-
     if (-not (Test-Path -LiteralPath $configPath -PathType Leaf)) {
         throw "Configuration file not found: $configPath. Copy config.example.toml to config.toml first."
     }
 
     [pscustomobject]@{
-        Executable = (Resolve-Path -LiteralPath $executablePath).Path
-        Config = (Resolve-Path -LiteralPath $configPath).Path
-        WorkingDirectory = Split-Path -Parent (Resolve-Path -LiteralPath $configPath).Path
+        Batch = (Resolve-Path -LiteralPath $batchPath).Path
+        WorkingDirectory = (Resolve-Path -LiteralPath $root).Path
     }
 }
 
@@ -53,22 +38,22 @@ function Install-MoetPriceMonitorTask {
         [switch]$AllowReplace
     )
 
-    $application = Resolve-MoetApplication
+    $paths = Get-MoetTaskPaths
     $existing = Get-ScheduledTask -TaskName $Name -ErrorAction SilentlyContinue
     $isManagedTask = (
         $null -ne $existing -and
         $null -ne $existing.Description -and
-        $existing.Description.StartsWith($ManagedTaskDescriptionPrefix)
+        $existing.Description -eq $TaskDescription
     )
     if ($null -ne $existing -and -not $isManagedTask -and -not $AllowReplace) {
         throw "An unrelated scheduled task named '$Name' already exists. Re-run with -Force only if you intend to replace it."
     }
 
-    $arguments = ('--config "{0}"' -f $application.Config)
+    $arguments = ('/d /c ""{0}" --scheduled"' -f $paths.Batch)
     $action = New-ScheduledTaskAction `
-        -Execute $application.Executable `
+        -Execute $env:ComSpec `
         -Argument $arguments `
-        -WorkingDirectory $application.WorkingDirectory
+        -WorkingDirectory $paths.WorkingDirectory
     $triggers = @(
         New-ScheduledTaskTrigger `
             -Daily `
@@ -90,7 +75,7 @@ function Install-MoetPriceMonitorTask {
             -Settings $settings `
             -Force | Out-Null
         Write-Host "Scheduled task installed: $Name"
-        Write-Host "Executable: $($application.Executable)"
+        Write-Host "Run entry: $($paths.Batch)"
     }
 }
 

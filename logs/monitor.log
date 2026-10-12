@@ -1997,3 +1997,31 @@ moet_price_monitor.client.SourceDataError: HTTP request failed after 3 attempts:
 2026-09-07T17:09:53 INFO moet_price_monitor.service: No update: publication date remains 2026-09-06
 2026-09-07T17:10:06 WARNING moet_price_monitor: Could not remove temporary path D:\programs\moet-price-monitor\.build-venv: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\programs\\moet-price-monitor\\.build-venv\\Lib\\site-packages\\pip\\_vendor\\rich\\__pycache__\\scope.cpython-314.pyc'
 2026-09-07T17:10:07 INFO moet_price_monitor: No update: source=2026-09-06T00:00:00+04:00
+2026-09-11T09:30:01 INFO core.service: Starting MOET essential-goods price check
+2026-09-11T09:30:20 INFO core.service: Source update detected: previous=2026-09-06T00:00:00+04:00 current=2026-09-10T00:00:00+04:00
+2026-09-11T09:31:13 INFO core.service: Committed source version 2026-09-10T00:00:00+04:00: fetched=196179 appended=196179
+2026-09-11T09:31:13 INFO core: Update processed: source=2026-09-10T00:00:00+04:00, fetched=196179, appended=196179
+2026-10-12T15:16:38 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-10-12T15:16:54 INFO moet_price_monitor.service: Source update detected: previous=2026-09-10T00:00:00+04:00 current=2026-10-08T00:00:00+04:00
+2026-10-12T15:17:05 ERROR moet_price_monitor: Price monitor run failed
+Traceback (most recent call last):
+  File "run_monitor.py", line 47, in main
+    result = monitor.run_once()
+  File "moet_price_monitor\service.py", line 66, in run_once
+  File "moet_price_monitor\client.py", line 148, in fetch_snapshot
+moet_price_monitor.client.SourceDataError: Source contains conflicting rows for productId + branchId: '8013' + '29'
+2026-10-12T15:17:26 INFO moet_price_monitor.service: Starting MOET essential-goods price check
+2026-10-12T15:17:42 INFO moet_price_monitor.service: Source update detected: previous=2026-09-10T00:00:00+04:00 current=2026-10-08T00:00:00+04:00
+2026-10-12T15:17:55 ERROR moet_price_monitor: Price monitor run failed
+Traceback (most recent call last):
+  File "run_monitor.py", line 47, in main
+    result = monitor.run_once()
+  File "moet_price_monitor\service.py", line 66, in run_once
+  File "moet_price_monitor\client.py", line 148, in fetch_snapshot
+moet_price_monitor.client.SourceDataError: Source contains conflicting rows for productId + branchId: '8013' + '29'
+2026-10-12T15:37:06 INFO core.service: Starting MOET essential-goods price check
+2026-10-12T15:37:23 INFO core.service: Source update detected: previous=2026-09-10T00:00:00+04:00 current=2026-10-08T00:00:00+04:00
+2026-10-12T15:37:36 WARNING core.client: Removed 1957 exact duplicate source rows from 220104 raw records
+2026-10-12T15:37:36 WARNING core.client: Averaged conflicting prices for 12 productId + branchId groups
+2026-10-12T15:38:16 INFO core.service: Committed source version 2026-10-08T00:00:00+04:00: fetched=218135 appended=218135
+2026-10-12T15:38:16 INFO core: Update processed: source=2026-10-08T00:00:00+04:00, fetched=218135, appended=218135

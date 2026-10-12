@@ -1,9 +1,7 @@
 from __future__ import annotations
 
-import csv
 from dataclasses import replace
 from datetime import timedelta
-import json
 import os
 from pathlib import Path
 
@@ -12,21 +10,26 @@ import pandas as pd
 import duckdb
 
 from core.client import PriceRecord
-from core.history import LEGACY_EVENT_FIELDS, PANEL_FIELDS, HistoryStore
-
-
-SOURCE_URL = "https://www.moet.gov.ae/en/essential-goods-prices-platform"
+from core.history import (
+    PANEL_FIELDS,
+    HistoryError,
+    HistoryStore,
+    _stata_has_compact_schema,
+    _normalize_panel_values,
+)
 
 
 def _read_rows(path: Path) -> list[dict[str, str]]:
-    frame = pd.read_stata(path, convert_categoricals=False).fillna("").astype(str)
+    frame = _normalize_panel_values(
+        pd.read_stata(path, convert_categoricals=True)
+    )
     return frame.to_dict("records")
 
 
 def test_first_snapshot_creates_panel_observations(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
-    store = HistoryStore(tmp_path, SOURCE_URL)
+    store = HistoryStore(tmp_path)
     source_updated_at = fixed_now - timedelta(days=1)
 
     observations = store.plan_observations([source_record], source_updated_at)
@@ -39,16 +42,23 @@ def test_first_snapshot_creates_panel_observations(
     assert rows[0]["publication_date"] == source_updated_at.date().isoformat()
     with duckdb.connect(str(store.database_path), read_only=True) as connection:
         assert connection.execute("SELECT COUNT(*) FROM prices_panel").fetchone()[0] == 1
-    state = json.loads(store.state_path.read_text(encoding="utf-8"))
-    assert state["record_count"] == 1
-    assert len(state["fingerprints"]) == 1
+        schema = {
+            row[0]: row[1]
+            for row in connection.execute("DESCRIBE prices_panel").fetchall()
+        }
+    assert schema["publication_date"] == "DATE"
+    assert schema["quantity"] == "DECIMAL(7,3)"
+    assert schema["standardized_price"] == "DECIMAL(8,5)"
+    assert schema["price_aed"] == "DECIMAL(6,3)"
+    assert _stata_has_compact_schema(store.panel_path)
+    assert not (tmp_path / "state.json").exists()
     assert store.last_source_updated_at() == source_updated_at
 
 
 def test_each_new_source_version_appends_a_complete_panel_period(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
-    store = HistoryStore(tmp_path, SOURCE_URL)
+    store = HistoryStore(tmp_path)
     first_version = fixed_now - timedelta(days=2)
     second_version = fixed_now - timedelta(days=1)
     first = store.plan_observations([source_record], first_version)
@@ -68,7 +78,7 @@ def test_each_new_source_version_appends_a_complete_panel_period(
 def test_panel_period_contains_only_records_present_in_snapshot(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
-    store = HistoryStore(tmp_path, SOURCE_URL)
+    store = HistoryStore(tmp_path)
     removed = replace(source_record, product_id="old-product", branch_id="old-branch")
     first_version = fixed_now - timedelta(days=2)
     initial_snapshot = [source_record, removed]
@@ -104,7 +114,7 @@ def test_panel_period_contains_only_records_present_in_snapshot(
 def test_writes_stata_panel_with_date_only_schema(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
-    store = HistoryStore(tmp_path, SOURCE_URL)
+    store = HistoryStore(tmp_path)
     observations = store.plan_observations([source_record], fixed_now)
 
     store.commit(observations, [source_record], fixed_now)
@@ -119,26 +129,26 @@ def test_writes_stata_panel_with_date_only_schema(
 def test_failed_commit_is_recoverable(
     tmp_path: Path, source_record: PriceRecord, fixed_now, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    store = HistoryStore(tmp_path, SOURCE_URL)
+    store = HistoryStore(tmp_path)
     observations = store.plan_observations([source_record], fixed_now)
     original_replace = os.replace
     failures_remaining = 1
 
-    def fail_state_replace_once(source: str | bytes | Path, destination: str | bytes | Path) -> None:
+    def fail_panel_replace_once(source: str | bytes | Path, destination: str | bytes | Path) -> None:
         nonlocal failures_remaining
-        if Path(destination) == store.state_path and failures_remaining:
+        if Path(destination) == store.panel_path and failures_remaining:
             failures_remaining -= 1
             raise OSError("simulated interruption")
         original_replace(source, destination)
 
-    monkeypatch.setattr("core.history.os.replace", fail_state_replace_once)
+    monkeypatch.setattr("core.history.os.replace", fail_panel_replace_once)
 
     with pytest.raises(OSError, match="simulated interruption"):
         store.commit(observations, [source_record], fixed_now)
 
     assert store.transaction_path.exists()
-    assert store.panel_path.exists()
-    assert not store.state_path.exists()
+    assert store.database_path.exists()
+    assert not store.panel_path.exists()
 
     store.recover_if_needed()
 
@@ -150,112 +160,112 @@ def test_failed_commit_is_recoverable(
 def test_duplicate_snapshot_identity_is_rejected(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
-    store = HistoryStore(tmp_path, SOURCE_URL)
+    store = HistoryStore(tmp_path)
 
     with pytest.raises(ValueError, match="Duplicate snapshot identity"):
         store.plan_observations([source_record, source_record], fixed_now)
 
 
-def test_migrates_legacy_events_into_complete_panel_periods(
+def test_rejects_numeric_values_that_exceed_storage_precision(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
-    store = HistoryStore(tmp_path, SOURCE_URL)
-    removed = replace(source_record, product_id="old-product", branch_id="old-branch")
-    changed = replace(source_record, price_aed="6.25")
-    added = replace(source_record, product_id="new-product", branch_id="new-branch")
-    first_version = fixed_now - timedelta(days=2)
-    second_version = fixed_now - timedelta(days=1)
-
-    final_snapshot = [changed, added]
-    store.commit(
-        store.plan_observations(final_snapshot, second_version),
-        final_snapshot,
-        second_version,
-    )
-    store.panel_path.unlink()
-    store.database_path.unlink()
-
-    legacy_rows = [
-        ("initial", first_version, source_record),
-        ("initial", first_version, removed),
-        ("changed", second_version, changed),
-        ("new", second_version, added),
-        ("removed", second_version, removed),
-    ]
-    with store.legacy_event_path.open(
-        "w", encoding="utf-8-sig", newline=""
-    ) as handle:
-        writer = csv.DictWriter(handle, fieldnames=LEGACY_EVENT_FIELDS)
-        writer.writeheader()
-        for change_type, version, record in legacy_rows:
-            writer.writerow(
-                {
-                    "change_type": change_type,
-                    "source_updated_at": version.isoformat(timespec="seconds"),
-                    "collected_at": fixed_now.isoformat(timespec="seconds"),
-                    "source_url": SOURCE_URL,
-                    **record.as_dict(),
-                }
-            )
-
-    migrated = store.migrate_existing_data_if_needed()
-
-    rows = _read_rows(store.panel_path)
-    assert migrated == 4
-    assert len(rows) == 4
-    with duckdb.connect(str(store.database_path), read_only=True) as connection:
-        assert connection.execute("SELECT COUNT(*) FROM prices_panel").fetchone()[0] == 4
-    assert store.legacy_event_path.exists()
-    second_rows = [
-        row
-        for row in rows
-        if row["publication_date"] == second_version.date().isoformat()
-    ]
-    assert {(row["product_id"], row["branch_id"]) for row in second_rows} == {
-        changed.key,
-        added.key,
-    }
-    assert {row["price_aed"] for row in second_rows if row["product_id"] == changed.product_id} == {
-        "6.25"
-    }
+    store = HistoryStore(tmp_path)
+    unsupported_precision = replace(source_record, standardized_price="8.123456")
+    with pytest.raises(HistoryError, match="exceeds DECIMAL"):
+        store.commit(
+            store.plan_observations([unsupported_precision], fixed_now),
+            [unsupported_precision],
+            fixed_now,
+        )
 
 
-def test_migrates_existing_local_stata_panel_to_duckdb(
+def test_rejects_dta_only_store_instead_of_migrating_it(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
-    store = HistoryStore(tmp_path, SOURCE_URL)
+    store = HistoryStore(tmp_path)
     store.commit(
         store.plan_observations([source_record], fixed_now), [source_record], fixed_now
     )
     store.database_path.unlink()
 
-    migrated = store.migrate_existing_data_if_needed()
+    with pytest.raises(HistoryError, match="automatic cross-format migration is disabled"):
+        store.validate_current_store()
+    assert not store.database_path.exists()
+    assert store.panel_path.exists()
 
-    assert migrated == 1
-    with duckdb.connect(str(store.database_path), read_only=True) as connection:
-        assert connection.execute("SELECT COUNT(*) FROM prices_panel").fetchone()[0] == 1
+
+@pytest.mark.parametrize("legacy_name", ["prices_panel.csv", "prices_history.csv"])
+def test_rejects_legacy_csv_without_importing_it(
+    tmp_path: Path, legacy_name: str
+) -> None:
+    store = HistoryStore(tmp_path)
+    (tmp_path / legacy_name).write_text("legacy data\n", encoding="utf-8")
+
+    with pytest.raises(HistoryError, match="Legacy CSV data is not imported automatically"):
+        store.validate_current_store()
+    assert not store.database_path.exists()
+    assert not store.panel_path.exists()
 
 
-def test_rebuilds_missing_local_state_from_duckdb(
+def test_rejects_old_duckdb_types_without_rewriting_them(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
-    store = HistoryStore(tmp_path, SOURCE_URL)
+    store = HistoryStore(tmp_path)
     store.commit(
         store.plan_observations([source_record], fixed_now), [source_record], fixed_now
     )
-    store.state_path.unlink()
-    restored_store = HistoryStore(tmp_path, SOURCE_URL)
+    select_fields = ", ".join(
+        f'CAST("{field}" AS VARCHAR) AS "{field}"' for field in PANEL_FIELDS
+    )
+    with duckdb.connect(str(store.database_path)) as connection:
+        connection.execute(
+            f"CREATE OR REPLACE TABLE prices_panel AS SELECT {select_fields} FROM prices_panel"
+        )
 
-    assert restored_store.last_source_updated_at() == fixed_now
-    state = json.loads(restored_store.state_path.read_text(encoding="utf-8"))
-    assert state["record_count"] == 1
-    assert next(iter(state["records"].values()))["product_id"] == source_record.product_id
+    with pytest.raises(HistoryError, match="automatic schema migration is disabled"):
+        store.validate_current_store()
+
+    with duckdb.connect(str(store.database_path), read_only=True) as connection:
+        assert connection.execute(
+            "SELECT data_type FROM information_schema.columns "
+            "WHERE table_name = 'prices_panel' AND column_name = 'publication_date'"
+        ).fetchone()[0] == "VARCHAR"
 
 
-def test_refreshes_stale_local_stata_export_from_duckdb(
+def test_rejects_missing_duckdb_metadata_without_adding_it(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
-    store = HistoryStore(tmp_path, SOURCE_URL)
+    store = HistoryStore(tmp_path)
+    store.commit(
+        store.plan_observations([source_record], fixed_now), [source_record], fixed_now
+    )
+    with duckdb.connect(str(store.database_path)) as connection:
+        connection.execute("DROP TABLE monitor_metadata")
+
+    with pytest.raises(HistoryError, match="monitor_metadata table is required"):
+        store.validate_current_store()
+
+    with duckdb.connect(str(store.database_path), read_only=True) as connection:
+        assert "monitor_metadata" not in {
+            row[0] for row in connection.execute("SHOW TABLES").fetchall()
+        }
+
+
+def test_reads_source_version_from_duckdb_without_state_file(
+    tmp_path: Path, source_record: PriceRecord, fixed_now
+) -> None:
+    store = HistoryStore(tmp_path)
+    store.commit(
+        store.plan_observations([source_record], fixed_now), [source_record], fixed_now
+    )
+    assert store.last_source_updated_at() == fixed_now
+    assert not (tmp_path / "state.json").exists()
+
+
+def test_rejects_stale_local_stata_export_without_repair(
+    tmp_path: Path, source_record: PriceRecord, fixed_now
+) -> None:
+    store = HistoryStore(tmp_path)
     first_version = fixed_now - timedelta(days=1)
     second_version = fixed_now
     store.commit(
@@ -268,11 +278,18 @@ def test_refreshes_stale_local_stata_export_from_duckdb(
         [source_record],
         second_version,
     )
-    stale = pd.read_stata(store.panel_path, convert_categoricals=False)
-    stale = stale[stale["publication_date"] == first_version.date().isoformat()]
-    stale.to_stata(store.panel_path, write_index=False, version=118)
+    stale = pd.read_stata(store.panel_path, convert_categoricals=True)
+    stale = stale[
+        pd.to_datetime(stale["publication_date"]).dt.strftime("%Y-%m-%d")
+        == first_version.date().isoformat()
+    ]
+    stale.to_stata(
+        store.panel_path,
+        write_index=False,
+        version=118,
+        convert_dates={"publication_date": "td"},
+    )
 
-    migrated = store.migrate_existing_data_if_needed()
-
-    assert migrated == 2
-    assert len(_read_rows(store.panel_path)) == 2
+    with pytest.raises(HistoryError, match="Stata export is out of sync with DuckDB"):
+        store.validate_current_store()
+    assert len(_read_rows(store.panel_path)) == 1
