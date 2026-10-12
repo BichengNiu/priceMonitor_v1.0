@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 import pandas as pd
+import duckdb
 
 from core.client import PriceRecord
 from core.history import LEGACY_EVENT_FIELDS, PANEL_FIELDS, HistoryStore
@@ -36,6 +37,8 @@ def test_first_snapshot_creates_panel_observations(
     assert len(rows) == 1
     assert rows[0]["product_id"] == source_record.product_id
     assert rows[0]["publication_date"] == source_updated_at.date().isoformat()
+    with duckdb.connect(str(store.database_path), read_only=True) as connection:
+        assert connection.execute("SELECT COUNT(*) FROM prices_panel").fetchone()[0] == 1
     state = json.loads(store.state_path.read_text(encoding="utf-8"))
     assert state["record_count"] == 1
     assert len(state["fingerprints"]) == 1
@@ -170,6 +173,7 @@ def test_migrates_legacy_events_into_complete_panel_periods(
         second_version,
     )
     store.panel_path.unlink()
+    store.database_path.unlink()
 
     legacy_rows = [
         ("initial", first_version, source_record),
@@ -199,6 +203,8 @@ def test_migrates_legacy_events_into_complete_panel_periods(
     rows = _read_rows(store.panel_path)
     assert migrated == 4
     assert len(rows) == 4
+    with duckdb.connect(str(store.database_path), read_only=True) as connection:
+        assert connection.execute("SELECT COUNT(*) FROM prices_panel").fetchone()[0] == 4
     assert store.legacy_event_path.exists()
     second_rows = [
         row
@@ -212,3 +218,61 @@ def test_migrates_legacy_events_into_complete_panel_periods(
     assert {row["price_aed"] for row in second_rows if row["product_id"] == changed.product_id} == {
         "6.25"
     }
+
+
+def test_migrates_existing_local_stata_panel_to_duckdb(
+    tmp_path: Path, source_record: PriceRecord, fixed_now
+) -> None:
+    store = HistoryStore(tmp_path, SOURCE_URL)
+    store.commit(
+        store.plan_observations([source_record], fixed_now), [source_record], fixed_now
+    )
+    store.database_path.unlink()
+
+    migrated = store.migrate_existing_data_if_needed()
+
+    assert migrated == 1
+    with duckdb.connect(str(store.database_path), read_only=True) as connection:
+        assert connection.execute("SELECT COUNT(*) FROM prices_panel").fetchone()[0] == 1
+
+
+def test_rebuilds_missing_local_state_from_duckdb(
+    tmp_path: Path, source_record: PriceRecord, fixed_now
+) -> None:
+    store = HistoryStore(tmp_path, SOURCE_URL)
+    store.commit(
+        store.plan_observations([source_record], fixed_now), [source_record], fixed_now
+    )
+    store.state_path.unlink()
+    restored_store = HistoryStore(tmp_path, SOURCE_URL)
+
+    assert restored_store.last_source_updated_at() == fixed_now
+    state = json.loads(restored_store.state_path.read_text(encoding="utf-8"))
+    assert state["record_count"] == 1
+    assert next(iter(state["records"].values()))["product_id"] == source_record.product_id
+
+
+def test_refreshes_stale_local_stata_export_from_duckdb(
+    tmp_path: Path, source_record: PriceRecord, fixed_now
+) -> None:
+    store = HistoryStore(tmp_path, SOURCE_URL)
+    first_version = fixed_now - timedelta(days=1)
+    second_version = fixed_now
+    store.commit(
+        store.plan_observations([source_record], first_version),
+        [source_record],
+        first_version,
+    )
+    store.commit(
+        store.plan_observations([source_record], second_version),
+        [source_record],
+        second_version,
+    )
+    stale = pd.read_stata(store.panel_path, convert_categoricals=False)
+    stale = stale[stale["publication_date"] == first_version.date().isoformat()]
+    stale.to_stata(store.panel_path, write_index=False, version=118)
+
+    migrated = store.migrate_existing_data_if_needed()
+
+    assert migrated == 2
+    assert len(_read_rows(store.panel_path)) == 2

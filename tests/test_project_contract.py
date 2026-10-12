@@ -71,6 +71,7 @@ def test_required_delivery_files_and_commands_are_present() -> None:
         "requirements.txt",
         "config.example.toml",
         "run_monitor.py",
+        "run_monitor.bat",
         "build.ps1",
         "install_task.ps1",
     }
@@ -80,11 +81,13 @@ def test_required_delivery_files_and_commands_are_present() -> None:
     requirements = (root / "requirements.txt").read_text(encoding="utf-8")
     assert "requests>=2.34.2,<3" in requirements
     assert "pandas>=2.3,<4" in requirements
+    assert "duckdb==1.5.6" in requirements
     assert "pytest>=9.1.1,<10" in requirements
 
     readme = (root / "README.md").read_text(encoding="utf-8")
     for command in (
         ".\\build.ps1",
+        ".\\run_monitor.bat",
         "python run_monitor.py --config config.toml",
         ".\\release\\MoetPriceMonitor.exe --config .\\config.toml",
         ".\\install_task.ps1",
@@ -142,6 +145,7 @@ def test_success_cleanup_removes_owned_artifacts_but_keeps_runtime_files(
     (project_dir / "core" / "cached.pyc").write_bytes(b"cache")
     data_dir.mkdir()
     (data_dir / ".prices_panel.pending.dta").write_bytes(b"pending")
+    (data_dir / ".prices_panel.pending.duckdb").write_bytes(b"pending")
     (project_dir / "release").mkdir()
     (project_dir / "release" / "MoetPriceMonitor.exe").write_bytes(b"runtime")
 
@@ -153,4 +157,5 @@ def test_success_cleanup_removes_owned_artifacts_but_keeps_runtime_files(
     assert not (project_dir / "core" / "__pycache__").exists()
     assert not (project_dir / "core" / "cached.pyc").exists()
     assert not (data_dir / ".prices_panel.pending.dta").exists()
+    assert not (data_dir / ".prices_panel.pending.duckdb").exists()
     assert (project_dir / "release" / "MoetPriceMonitor.exe").exists()

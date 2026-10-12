@@ -113,6 +113,8 @@ def _cleanup_temporary_artifacts(project_dir: Path, data_dir: Path) -> None:
     exact_files = {
         ".commit-transaction.json",
         ".commit-transaction.json.tmp",
+        ".prices_panel.pending.duckdb",
+        ".prices_panel.pending.duckdb.wal",
         ".prices_panel.pending.dta",
         ".state.json.pending",
         ".state.json.tmp",

@@ -40,7 +40,7 @@ class PriceMonitor:
         migrated_count = self.history.migrate_existing_data_if_needed()
         if migrated_count:
             LOGGER.info(
-                "Migrated existing data into %s Stata panel observations",
+                "Migrated existing data across panel formats: %s observations",
                 migrated_count,
             )
         last_version = self.history.last_source_updated_at()

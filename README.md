@@ -1,8 +1,8 @@
 # MOET 必需品价格定时采集器
 
-这是一个 Windows 价格采集程序。发布版 `MoetPriceMonitor.exe` 已内置 Python、`requests` 和 `pandas`，目标电脑运行它不需要安装 Python 或任何 Python 依赖包。
+这是一个 Windows 价格采集程序。发布版 `MoetPriceMonitor.exe` 已内置 Python、`requests`、`pandas` 和 `DuckDB`，目标电脑运行它不需要安装 Python 或任何 Python 依赖包。
 
-程序每天上午 10:00（电脑本地时间）检查一次。同一发布日期只会成功采集一次；发现新发布日期时，程序下载完整商品—门店快照并追加到 Stata 面板数据。
+程序每天上午 10:00（电脑本地时间）检查一次。同一发布日期只会成功采集一次；发现新发布日期时，程序下载完整商品—门店快照并追加到 DuckDB 面板数据库，同时更新本地 Stata 面板文件。
 
 ## 构建独立程序
 
@@ -42,17 +42,22 @@ python run_monitor.py --config config.toml
 .\release\MoetPriceMonitor.exe --config .\config.toml
 ```
 
+也可以双击项目根目录的 `run_monitor.bat`（或在 PowerShell 中运行 `.\run_monitor.bat`），手动执行一次完整采集；首次使用前请先按上文创建 `config.toml` 并构建 `release\MoetPriceMonitor.exe`。
+
 不传 `--config` 时，程序会读取可执行文件旁边的 `config.toml`。
 
-成功退出码为 `0`，失败退出码为 `1`。输出文件为：
+成功退出码为 `0`，失败退出码为 `1`。数据文件为：
 
-- `data\prices_panel.dta`：Stata 118 格式面板文件；
-- `data\state.json`：上次成功快照和指纹，用于去重、变更检测与恢复；
+- `data\prices_panel.duckdb`：采集程序使用的主数据库，纳入 Git LFS 并上传 GitHub；
+- `data\prices_panel.dta`：Stata 118 格式本地副本，供用户使用，不纳入 GitHub；
+- `data\state.json`：本地运行状态；缺失时可从 DuckDB 最新快照重建；
 - `logs\monitor.log`：滚动运行日志，单文件 5 MB，保留 5 个备份。
+
+DuckDB 是主存储，DTA 是每次成功提交时同步生成的本地导出；手工修改 DTA 不会反向修改数据库。首次运行若只有已有 DTA，程序会自动将其迁移到 DuckDB 并保留 DTA。`state.json` 也是本地文件，不上传 GitHub；从仓库取得 DuckDB 后，程序会按数据库中的最新快照在本机重建它。
 
 每次成功运行后，程序会清理自身产生的事务临时文件、Python 缓存、pytest 临时目录以及构建缓存目录；`data`、`logs`、`release` 和配置文件会保留。运行中的 Python 环境不会被自身删除。
 
-升级自旧版时，程序会将现有 `prices_panel.csv` 一次性转换为 `prices_panel.dta`，同时保留 CSV 作为备份。不要手工修改或删除 `state.json`，否则可能在面板中重复写入同一个发布日期。
+升级自旧版时，程序会将现有 DTA 或 CSV 一次性迁移到 DuckDB，并保留本地 DTA/CSV。不要手工修改或删除 `state.json`，否则可能在面板中重复写入同一个发布日期。
 
 ## 安装自动计划任务
 

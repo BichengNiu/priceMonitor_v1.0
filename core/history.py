@@ -1,4 +1,4 @@
-"""Append-only Stata panel storage and recoverable local state."""
+"""Append-only DuckDB panel storage, local Stata export, and recoverable state."""
 
 from __future__ import annotations
 
@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 from typing import Mapping
 
+import duckdb
 import pandas as pd
 
 from .client import PriceRecord
@@ -45,16 +46,18 @@ class PanelObservation:
 
 
 class HistoryStore:
-    """Append complete snapshots to a Stata panel and commit state consistently."""
+    """Append snapshots to DuckDB and keep a local Stata export in sync."""
 
     def __init__(self, data_dir: Path, source_url: str) -> None:
         self.data_dir = data_dir.resolve()
         self.source_url = source_url
+        self.database_path = self.data_dir / "prices_panel.duckdb"
         self.panel_path = self.data_dir / "prices_panel.dta"
         self.panel_csv_path = self.data_dir / "prices_panel.csv"
         self.legacy_event_path = self.data_dir / "prices_history.csv"
         self.state_path = self.data_dir / "state.json"
         self.transaction_path = self.data_dir / ".commit-transaction.json"
+        self._database_pending_path = self.data_dir / ".prices_panel.pending.duckdb"
         self._panel_pending_path = self.data_dir / ".prices_panel.pending.dta"
         self._state_pending_path = self.data_dir / ".state.json.pending"
 
@@ -70,6 +73,14 @@ class HistoryStore:
         expected_version = manifest.get("source_updated_at")
         if not isinstance(expected_version, str) or not expected_version:
             raise HistoryError("Transaction manifest has no source_updated_at")
+
+        if "database_pending" in manifest:
+            if self._database_pending_path.exists():
+                os.replace(self._database_pending_path, self.database_path)
+            elif not self.database_path.exists():
+                raise HistoryError(
+                    "Cannot recover transaction: database and staged database are missing"
+                )
 
         if self._panel_pending_path.exists():
             os.replace(self._panel_pending_path, self.panel_path)
@@ -89,6 +100,9 @@ class HistoryStore:
     def last_source_updated_at(self) -> datetime | None:
         self.recover_if_needed()
         state = self._load_state()
+        if state is None and self.database_path.exists():
+            self._restore_local_state()
+            state = self._load_state()
         if state is None:
             return None
         value = state.get("source_updated_at")
@@ -120,7 +134,12 @@ class HistoryStore:
         current = _records_by_key(snapshot)
 
         try:
-            existing = self._read_panel() if self.panel_path.exists() else _empty_panel()
+            if self.database_path.exists():
+                existing = self._read_database()
+            elif self.panel_path.exists():
+                existing = self._read_panel()
+            else:
+                existing = _empty_panel()
             addition = _observations_frame(observations)
             combined = pd.concat([existing, addition], ignore_index=True)
             if combined.duplicated(
@@ -129,6 +148,11 @@ class HistoryStore:
                 raise HistoryError(
                     "Duplicate panel identity: publication_date + product_id + branch_id"
                 )
+            _write_duckdb(
+                self._database_pending_path,
+                combined,
+                source_updated_at.isoformat(timespec="seconds"),
+            )
             _write_stata(self._panel_pending_path, combined)
             _write_json(
                 self._state_pending_path,
@@ -150,12 +174,37 @@ class HistoryStore:
         self.recover_if_needed()
 
     def migrate_existing_data_if_needed(self) -> int:
-        """Convert an existing panel CSV or legacy event CSV to Stata once."""
+        """Create a missing DuckDB database or local Stata export from existing data."""
 
         self.recover_if_needed()
+        if self.database_path.exists():
+            self._validate_database()
+            database_count, database_latest_date = self._database_summary()
+            if self.panel_path.exists():
+                local_panel = self._read_panel()
+                local_latest_date = (
+                    str(local_panel["publication_date"].max())
+                    if not local_panel.empty
+                    else None
+                )
+                if (
+                    len(local_panel) == database_count
+                    and local_latest_date == database_latest_date
+                ):
+                    return 0
+            frame = self._read_database()
+            _write_stata(self._panel_pending_path, frame)
+            os.replace(self._panel_pending_path, self.panel_path)
+            return len(frame)
         if self.panel_path.exists():
-            self._read_panel()
-            return 0
+            frame = self._read_panel()
+            _write_duckdb(
+                self._database_pending_path,
+                frame,
+                self._source_version_for_frame(frame),
+            )
+            os.replace(self._database_pending_path, self.database_path)
+            return len(frame)
         if self.panel_csv_path.exists():
             frame = pd.read_csv(
                 self.panel_csv_path, dtype=str, keep_default_na=False, encoding="utf-8-sig"
@@ -170,8 +219,7 @@ class HistoryStore:
             elif list(frame.columns) != PANEL_FIELDS:
                 raise HistoryError("Existing panel CSV header is not a supported schema")
             _validate_panel_frame(frame)
-            _write_stata(self._panel_pending_path, frame)
-            os.replace(self._panel_pending_path, self.panel_path)
+            self._write_initial_panel(frame)
             return len(frame)
         if not self.legacy_event_path.exists():
             return 0
@@ -215,15 +263,170 @@ class HistoryStore:
             raise HistoryError("Legacy CSV does not reconstruct to the saved latest state")
         frame = pd.DataFrame(panel_rows, columns=PANEL_FIELDS)
         _validate_panel_frame(frame)
-        _write_stata(self._panel_pending_path, frame)
-        os.replace(self._panel_pending_path, self.panel_path)
+        self._write_initial_panel(frame, expected_version)
         return len(frame)
+
+    def _write_initial_panel(
+        self, frame: pd.DataFrame, source_updated_at: str | None = None
+    ) -> None:
+        """Write both formats when migrating data without an active transaction."""
+
+        version = source_updated_at or self._source_version_for_frame(frame)
+        _write_duckdb(self._database_pending_path, frame, version)
+        _write_stata(self._panel_pending_path, frame)
+        os.replace(self._database_pending_path, self.database_path)
+        os.replace(self._panel_pending_path, self.panel_path)
+
+    def _source_version_for_frame(self, frame: pd.DataFrame) -> str:
+        state = self._load_state()
+        if state is not None:
+            value = state.get("source_updated_at")
+            if isinstance(value, str):
+                _parse_aware_timestamp(value, "source_updated_at")
+                return value
+        if frame.empty:
+            raise HistoryError("Cannot determine source version for an empty panel")
+        latest_date = str(frame["publication_date"].max())
+        inferred = f"{latest_date}T00:00:00+04:00"
+        _parse_aware_timestamp(inferred, "source_updated_at")
+        return inferred
+
+    def _validate_database(self) -> None:
+        try:
+            with duckdb.connect(str(self.database_path), read_only=True) as connection:
+                columns = [
+                    row[0]
+                    for row in connection.execute("DESCRIBE prices_panel").fetchall()
+                ]
+                connection.execute("SELECT COUNT(*) FROM prices_panel").fetchone()
+        except (OSError, duckdb.Error) as exc:
+            raise HistoryError(f"Cannot read valid DuckDB data from {self.database_path}") from exc
+        if columns != PANEL_FIELDS:
+            raise HistoryError("DuckDB panel columns do not match the approved schema")
+        self._ensure_database_metadata()
+        try:
+            with duckdb.connect(str(self.database_path), read_only=True) as connection:
+                source_version = connection.execute(
+                    "SELECT source_updated_at FROM monitor_metadata"
+                ).fetchone()[0]
+                latest_date = connection.execute(
+                    "SELECT MAX(publication_date) FROM prices_panel"
+                ).fetchone()[0]
+        except (OSError, duckdb.Error) as exc:
+            raise HistoryError(f"Cannot validate DuckDB metadata in {self.database_path}") from exc
+        if latest_date is not None and _parse_aware_timestamp(
+            source_version, "source_updated_at"
+        ).date().isoformat() != latest_date:
+            raise HistoryError("DuckDB source metadata does not match its latest panel date")
+
+    def _database_summary(self) -> tuple[int, str | None]:
+        try:
+            with duckdb.connect(str(self.database_path), read_only=True) as connection:
+                count, latest_date = connection.execute(
+                    "SELECT COUNT(*), MAX(publication_date) FROM prices_panel"
+                ).fetchone()
+        except (OSError, duckdb.Error) as exc:
+            raise HistoryError(f"Cannot summarize DuckDB panel {self.database_path}") from exc
+        return int(count), str(latest_date) if latest_date is not None else None
+
+    def _ensure_database_metadata(self) -> None:
+        try:
+            with duckdb.connect(str(self.database_path), read_only=True) as connection:
+                tables = {row[0] for row in connection.execute("SHOW TABLES").fetchall()}
+                if "monitor_metadata" in tables:
+                    versions = connection.execute(
+                        "SELECT source_updated_at FROM monitor_metadata"
+                    ).fetchall()
+                    if len(versions) != 1 or not isinstance(versions[0][0], str):
+                        raise HistoryError("DuckDB monitor metadata must contain one source version")
+                    _parse_aware_timestamp(versions[0][0], "source_updated_at")
+                    return
+                latest_date = connection.execute(
+                    "SELECT MAX(publication_date) FROM prices_panel"
+                ).fetchone()[0]
+        except (OSError, duckdb.Error) as exc:
+            raise HistoryError(f"Cannot inspect DuckDB metadata in {self.database_path}") from exc
+
+        version = self._saved_source_version()
+        if version is None:
+            if latest_date is None:
+                raise HistoryError("DuckDB panel has no source version metadata or observations")
+            version = f"{latest_date}T00:00:00+04:00"
+        _parse_aware_timestamp(version, "source_updated_at")
+        try:
+            with duckdb.connect(str(self.database_path)) as connection:
+                connection.execute(
+                    "CREATE TABLE monitor_metadata (source_updated_at VARCHAR NOT NULL)"
+                )
+                connection.execute("INSERT INTO monitor_metadata VALUES (?)", [version])
+                connection.execute("CHECKPOINT")
+        except (OSError, duckdb.Error) as exc:
+            raise HistoryError(f"Cannot initialize DuckDB metadata in {self.database_path}") from exc
+
+    def _saved_source_version(self) -> str | None:
+        state = self._load_state()
+        if state is None:
+            return None
+        value = state.get("source_updated_at")
+        if not isinstance(value, str):
+            raise HistoryError("State source_updated_at must be a string")
+        _parse_aware_timestamp(value, "source_updated_at")
+        return value
+
+    def _restore_local_state(self) -> None:
+        """Rebuild ignored runtime state from the shared DuckDB snapshot."""
+
+        self._validate_database()
+        try:
+            with duckdb.connect(str(self.database_path), read_only=True) as connection:
+                source_updated_at = connection.execute(
+                    "SELECT source_updated_at FROM monitor_metadata"
+                ).fetchone()[0]
+                latest_date = connection.execute(
+                    "SELECT MAX(publication_date) FROM prices_panel"
+                ).fetchone()[0]
+                if latest_date is None:
+                    raise HistoryError("Cannot restore state from an empty DuckDB panel")
+                columns = ", ".join(f'"{field}"' for field in PANEL_FIELDS[1:])
+                frame = connection.execute(
+                    f"SELECT {columns} FROM prices_panel WHERE publication_date = ?",
+                    [latest_date],
+                ).fetchdf()
+        except (OSError, duckdb.Error, ValueError) as exc:
+            raise HistoryError(f"Cannot restore runtime state from {self.database_path}") from exc
+
+        records = {
+            _encode_key(record.key): record
+            for record in (PriceRecord.from_dict(row) for row in frame.to_dict("records"))
+        }
+        restored = {
+            "schema_version": 1,
+            "source_updated_at": source_updated_at,
+            "record_count": len(records),
+            "records": {key: records[key].as_dict() for key in sorted(records)},
+            "fingerprints": {
+                key: _fingerprint(records[key]) for key in sorted(records)
+            },
+        }
+        _write_json(self._state_pending_path, restored)
+        os.replace(self._state_pending_path, self.state_path)
 
     def _read_panel(self) -> pd.DataFrame:
         try:
             frame = pd.read_stata(self.panel_path, convert_categoricals=False)
         except (OSError, ValueError) as exc:
             raise HistoryError(f"Cannot read valid Stata data from {self.panel_path}") from exc
+        for column in frame.columns:
+            frame[column] = frame[column].fillna("").astype(str)
+        _validate_panel_frame(frame)
+        return frame[PANEL_FIELDS]
+
+    def _read_database(self) -> pd.DataFrame:
+        try:
+            with duckdb.connect(str(self.database_path), read_only=True) as connection:
+                frame = connection.execute("SELECT * FROM prices_panel").fetchdf()
+        except (OSError, duckdb.Error, ValueError) as exc:
+            raise HistoryError(f"Cannot read valid DuckDB data from {self.database_path}") from exc
         for column in frame.columns:
             frame[column] = frame[column].fillna("").astype(str)
         _validate_panel_frame(frame)
@@ -256,6 +459,7 @@ class HistoryStore:
             {
                 "schema_version": 1,
                 "source_updated_at": source_updated_at.isoformat(timespec="seconds"),
+                "database_pending": self._database_pending_path.name,
                 "panel_pending": self._panel_pending_path.name,
                 "state_pending": self._state_pending_path.name,
             },
@@ -263,7 +467,12 @@ class HistoryStore:
         os.replace(temporary_manifest, self.transaction_path)
 
     def _discard_orphaned_pending_files(self) -> None:
-        for path in (self._panel_pending_path, self._state_pending_path):
+        for path in (
+            self._database_pending_path,
+            self._database_pending_path.with_name(self._database_pending_path.name + ".wal"),
+            self._panel_pending_path,
+            self._state_pending_path,
+        ):
             path.unlink(missing_ok=True)
 
 
@@ -315,6 +524,25 @@ def _validate_panel_frame(frame: pd.DataFrame) -> None:
 def _write_stata(path: Path, frame: pd.DataFrame) -> None:
     normalized = frame[PANEL_FIELDS].fillna("").astype(str)
     normalized.to_stata(path, write_index=False, version=118)
+    with path.open("r+b") as handle:
+        os.fsync(handle.fileno())
+
+
+def _write_duckdb(path: Path, frame: pd.DataFrame, source_updated_at: str) -> None:
+    """Write a compact, persistent DuckDB panel with the canonical string schema."""
+
+    normalized = frame[PANEL_FIELDS].fillna("").astype(str)
+    connection = duckdb.connect(str(path))
+    try:
+        connection.register("_panel_frame", normalized)
+        connection.execute("CREATE TABLE prices_panel AS SELECT * FROM _panel_frame")
+        connection.execute(
+            "CREATE TABLE monitor_metadata (source_updated_at VARCHAR NOT NULL)"
+        )
+        connection.execute("INSERT INTO monitor_metadata VALUES (?)", [source_updated_at])
+        connection.execute("CHECKPOINT")
+    finally:
+        connection.close()
     with path.open("r+b") as handle:
         os.fsync(handle.fileno())
 

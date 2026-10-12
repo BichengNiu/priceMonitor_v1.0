@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable, Mapping
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, fields, replace
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal, InvalidOperation
 import html as html_module
@@ -135,31 +135,59 @@ class MoetClient:
                 f"received {len(final_rows)}, declared {expected_total}"
             )
 
-        records: list[PriceRecord] = []
         seen: dict[tuple[str, str], PriceRecord] = {}
+        conflicting: dict[tuple[str, str], list[PriceRecord]] = {}
         exact_duplicates = 0
         for index, raw_row in enumerate(final_rows, start=1):
             if not isinstance(raw_row, Mapping):
                 raise SourceDataError(f"Final snapshot row {index} is not an object")
             record = _normalize_record(raw_row)
             previous = seen.get(record.key)
-            if previous is not None:
-                if previous != record:
-                    raise SourceDataError(
-                        "Source contains conflicting rows for productId + branchId: "
-                        f"{record.product_id!r} + {record.branch_id!r}"
-                    )
+            if previous is None:
+                seen[record.key] = record
+                continue
+
+            variants = conflicting.get(record.key)
+            if variants is None:
+                if previous == record:
+                    exact_duplicates += 1
+                    continue
+                _require_price_only_conflict(previous, record)
+                conflicting[record.key] = [previous, record]
+                continue
+
+            if record in variants:
                 exact_duplicates += 1
                 continue
-            seen[record.key] = record
-            records.append(record)
+
+            for variant in variants:
+                _require_price_only_conflict(variant, record)
+            variants.append(record)
+
+        for key, variants in conflicting.items():
+            seen[key] = replace(
+                variants[0],
+                standardized_price=_mean_decimal_text(
+                    [variant.standardized_price for variant in variants],
+                    field_name="standardizedPrice",
+                ),
+                price_aed=_mean_decimal_text(
+                    [variant.price_aed for variant in variants], field_name="price"
+                ),
+            )
+
         if exact_duplicates:
             LOGGER.warning(
                 "Removed %s exact duplicate source rows from %s raw records",
                 exact_duplicates,
                 expected_total,
             )
-        return records
+        if conflicting:
+            LOGGER.warning(
+                "Averaged conflicting prices for %s productId + branchId groups",
+                len(conflicting),
+            )
+        return list(seen.values())
 
     def _fetch_page(
         self, page: int, *, page_size: int | None = None
@@ -287,3 +315,23 @@ def _decimal_text(value: object, *, field_name: str) -> str:
     if "." in rendered:
         rendered = rendered.rstrip("0").rstrip(".")
     return rendered or "0"
+
+
+def _require_price_only_conflict(left: PriceRecord, right: PriceRecord) -> None:
+    """Reject duplicate keys that disagree on identity or descriptive fields."""
+
+    price_fields = {"price_aed", "standardized_price"}
+    for field in fields(PriceRecord):
+        if field.name in price_fields:
+            continue
+        if getattr(left, field.name) != getattr(right, field.name):
+            raise SourceDataError(
+                "Conflicting duplicate rows differ in non-price field "
+                f"{field.name!r} for productId + branchId: "
+                f"{left.product_id!r} + {left.branch_id!r}"
+            )
+
+
+def _mean_decimal_text(values: list[str], *, field_name: str) -> str:
+    mean = sum((Decimal(value) for value in values), Decimal(0)) / Decimal(len(values))
+    return _decimal_text(mean, field_name=field_name)

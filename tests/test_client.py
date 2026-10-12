@@ -174,7 +174,7 @@ def test_deduplicates_exact_product_branch_rows(tmp_path: Path) -> None:
     assert len(client.fetch_snapshot()) == 1
 
 
-def test_rejects_conflicting_product_branch_rows(tmp_path: Path) -> None:
+def test_averages_conflicting_product_branch_prices(tmp_path: Path) -> None:
     first = _raw_record("1", "1", price="5.25")
     second = _raw_record("1", "1", price="6.25")
     session = FakeSession(
@@ -182,8 +182,11 @@ def test_rejects_conflicting_product_branch_rows(tmp_path: Path) -> None:
     )
     client = MoetClient(_settings(tmp_path), session=session, sleep=lambda _: None)
 
-    with pytest.raises(SourceDataError, match="conflicting"):
-        client.fetch_snapshot()
+    records = client.fetch_snapshot()
+
+    assert len(records) == 1
+    assert records[0].price_aed == "5.75"
+    assert records[0].standardized_price == "8.75"
 
 
 def test_retries_transient_failures_and_reports_exhaustion(tmp_path: Path) -> None:

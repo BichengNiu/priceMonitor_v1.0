@@ -11,6 +11,13 @@ htmlcov/
 # Local virtual environments and build caches
 .venv/
 .build-venv/
+.build/
+
+# User-facing Stata exports stay local; the DuckDB panel is tracked with Git LFS.
+data/*.dta
+
+# Runtime checkpoint is reconstructed locally from the tracked DuckDB database.
+data/state.json
 
 # Temporary/editor files
 *.tmp
