@@ -48,6 +48,16 @@ class PanelObservation:
     record: PriceRecord
 
 
+@dataclass(frozen=True)
+class CollectionProvenance:
+    """Source and collection timestamps for one published snapshot."""
+
+    publication_date: date
+    source_updated_at: str
+    collected_at: str
+    source_url: str
+
+
 class HistoryStore:
     """Append snapshots to DuckDB and keep a local Stata export in sync."""
 
@@ -117,7 +127,6 @@ class HistoryStore:
         database_exists = self.database_path.exists()
         panel_exists = self.panel_path.exists()
         if not database_exists and not panel_exists:
-            self._reject_unmigrated_csv_files()
             return
         if database_exists != panel_exists:
             raise HistoryError(
@@ -142,10 +151,17 @@ class HistoryStore:
         observations: list[PanelObservation],
         snapshot: list[PriceRecord],
         source_updated_at: datetime,
+        *,
+        collected_at: datetime,
+        source_url: str,
     ) -> None:
         """Stage complete outputs, then publish or recover them deterministically."""
 
         _require_aware(source_updated_at, "source_updated_at")
+        _require_aware(collected_at, "collected_at")
+        source_url = source_url.strip()
+        if not source_url:
+            raise ValueError("source_url must not be empty")
         self.data_dir.mkdir(parents=True, exist_ok=True)
         self.recover_if_needed()
         _records_by_key(snapshot)
@@ -155,13 +171,14 @@ class HistoryStore:
                 self._validate_database()
                 self._validate_stata_export()
                 existing = self._read_database()
+                provenance = self._read_collection_provenance()
             elif self.panel_path.exists():
                 raise HistoryError(
                     "DuckDB is missing; automatic DTA-to-DuckDB migration is disabled"
                 )
             else:
-                self._reject_unmigrated_csv_files()
                 existing = _empty_panel()
+                provenance = []
             addition = _observations_frame(observations)
             combined = pd.concat([existing, addition], ignore_index=True)
             if combined.duplicated(
@@ -170,10 +187,20 @@ class HistoryStore:
                 raise HistoryError(
                     "Duplicate panel identity: publication_date + product_id + branch_id"
                 )
+            provenance.append(
+                CollectionProvenance(
+                    publication_date=source_updated_at.date(),
+                    source_updated_at=source_updated_at.isoformat(timespec="seconds"),
+                    collected_at=collected_at.isoformat(timespec="seconds"),
+                    source_url=source_url,
+                )
+            )
+            _validate_collection_provenance(provenance)
             _write_duckdb(
                 self._database_pending_path,
                 combined,
                 source_updated_at.isoformat(timespec="seconds"),
+                provenance,
             )
             _write_stata(self._panel_pending_path, combined)
             self._write_transaction_manifest(source_updated_at)
@@ -182,17 +209,6 @@ class HistoryStore:
                 self._discard_orphaned_pending_files()
             raise
         self.recover_if_needed()
-
-    def _reject_unmigrated_csv_files(self) -> None:
-        legacy_files = (
-            self.data_dir / "prices_panel.csv",
-            self.data_dir / "prices_history.csv",
-        )
-        found = [path.name for path in legacy_files if path.exists()]
-        if found:
-            raise HistoryError(
-                "Legacy CSV data is not imported automatically: " + ", ".join(found)
-            )
 
     def _validate_database(self) -> None:
         try:
@@ -203,6 +219,8 @@ class HistoryStore:
                 tables = {row[0] for row in connection.execute("SHOW TABLES").fetchall()}
                 if "monitor_metadata" not in tables:
                     raise HistoryError("DuckDB monitor_metadata table is required")
+                if "collection_metadata" not in tables:
+                    raise HistoryError("DuckDB collection_metadata table is required")
                 metadata_columns = [
                     (row[0], row[1])
                     for row in connection.execute(
@@ -211,6 +229,16 @@ class HistoryStore:
                 ]
                 versions = connection.execute(
                     "SELECT source_updated_at FROM monitor_metadata"
+                ).fetchall()
+                provenance_columns = [
+                    (row[0], row[1])
+                    for row in connection.execute(
+                        "DESCRIBE collection_metadata"
+                    ).fetchall()
+                ]
+                provenance_rows = connection.execute(
+                    "SELECT publication_date, source_updated_at, collected_at, source_url "
+                    "FROM collection_metadata"
                 ).fetchall()
                 latest_date = connection.execute(
                     "SELECT MAX(publication_date) FROM prices_panel"
@@ -226,6 +254,16 @@ class HistoryStore:
             )
         if metadata_columns != [("source_updated_at", "VARCHAR")]:
             raise HistoryError("DuckDB monitor metadata schema is not current")
+        if provenance_columns != [
+            ("publication_date", "DATE"),
+            ("source_updated_at", "VARCHAR"),
+            ("collected_at", "VARCHAR"),
+            ("source_url", "VARCHAR"),
+        ]:
+            raise HistoryError("DuckDB collection metadata schema is not current")
+        _validate_collection_provenance(
+            [CollectionProvenance(*row) for row in provenance_rows]
+        )
         if len(versions) != 1 or not isinstance(versions[0][0], str):
             raise HistoryError("DuckDB monitor metadata must contain one source version")
         source_version = versions[0][0]
@@ -292,6 +330,19 @@ class HistoryStore:
         frame = _normalize_panel_values(frame)
         _validate_panel_frame(frame)
         return frame[PANEL_FIELDS]
+
+    def _read_collection_provenance(self) -> list[CollectionProvenance]:
+        try:
+            with duckdb.connect(str(self.database_path), read_only=True) as connection:
+                rows = connection.execute(
+                    "SELECT publication_date, source_updated_at, collected_at, source_url "
+                    "FROM collection_metadata ORDER BY publication_date"
+                ).fetchall()
+        except (OSError, duckdb.Error) as exc:
+            raise HistoryError(
+                f"Cannot read DuckDB collection metadata in {self.database_path}"
+            ) from exc
+        return [CollectionProvenance(*row) for row in rows]
 
     def _write_transaction_manifest(self, source_updated_at: datetime) -> None:
         temporary_manifest = self.transaction_path.with_suffix(".json.tmp")
@@ -360,6 +411,32 @@ def _validate_panel_frame(frame: pd.DataFrame) -> None:
                 )
 
 
+def _validate_collection_provenance(
+    provenance: list[CollectionProvenance],
+) -> None:
+    seen_dates: set[date] = set()
+    for row in provenance:
+        if (
+            not isinstance(row.publication_date, date)
+            or not isinstance(row.source_updated_at, str)
+            or not isinstance(row.collected_at, str)
+            or not isinstance(row.source_url, str)
+            or not row.source_url.strip()
+        ):
+            raise HistoryError("DuckDB collection metadata contains invalid values")
+        if row.publication_date in seen_dates:
+            raise HistoryError("DuckDB collection metadata has duplicate publication dates")
+        seen_dates.add(row.publication_date)
+        if (
+            _parse_aware_timestamp(row.source_updated_at, "source_updated_at").date()
+            != row.publication_date
+        ):
+            raise HistoryError(
+                "DuckDB collection metadata date does not match source update"
+            )
+        _parse_aware_timestamp(row.collected_at, "collected_at")
+
+
 def _write_stata(path: Path, frame: pd.DataFrame) -> None:
     normalized = _normalize_panel_values(frame)
     _validate_panel_frame(normalized)
@@ -383,7 +460,12 @@ def _write_stata(path: Path, frame: pd.DataFrame) -> None:
         os.fsync(handle.fileno())
 
 
-def _write_duckdb(path: Path, frame: pd.DataFrame, source_updated_at: str) -> None:
+def _write_duckdb(
+    path: Path,
+    frame: pd.DataFrame,
+    source_updated_at: str,
+    provenance: list[CollectionProvenance],
+) -> None:
     """Write a compact panel using native date/decimal types and string dimensions."""
 
     normalized = _normalize_panel_values(frame)
@@ -412,6 +494,26 @@ def _write_duckdb(path: Path, frame: pd.DataFrame, source_updated_at: str) -> No
             "CREATE TABLE monitor_metadata (source_updated_at VARCHAR NOT NULL)"
         )
         connection.execute("INSERT INTO monitor_metadata VALUES (?)", [source_updated_at])
+        connection.execute(
+            "CREATE TABLE collection_metadata ("
+            "publication_date DATE NOT NULL, "
+            "source_updated_at VARCHAR NOT NULL, "
+            "collected_at VARCHAR NOT NULL, "
+            "source_url VARCHAR NOT NULL)"
+        )
+        if provenance:
+            connection.executemany(
+                "INSERT INTO collection_metadata VALUES (?, ?, ?, ?)",
+                [
+                    (
+                        row.publication_date,
+                        row.source_updated_at,
+                        row.collected_at,
+                        row.source_url,
+                    )
+                    for row in provenance
+                ],
+            )
         connection.execute("CHECKPOINT")
     finally:
         connection.close()

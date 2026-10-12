@@ -16,8 +16,8 @@ htmlcov/
 # User-facing Stata exports stay local; the DuckDB panel is tracked with Git LFS.
 data/*.dta
 
-# Legacy local checkpoint is ignored and is no longer read by the collector.
-data/state.json
+# Runtime logs are generated locally.
+logs/
 
 # Temporary/editor files
 *.tmp

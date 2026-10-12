@@ -21,7 +21,7 @@ function Get-MoetTaskPaths {
         throw "Standalone worker not found. Run .\build.ps1 first: $executablePath"
     }
     if (-not (Test-Path -LiteralPath $configPath -PathType Leaf)) {
-        throw "Configuration file not found: $configPath. Copy config.example.toml to config.toml first."
+        throw "Configuration file not found: $configPath. Restore the root config.toml before installing the task."
     }
 
     [pscustomobject]@{

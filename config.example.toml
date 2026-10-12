@@ -1,8 +1,0 @@
-[monitor]
-source_url = "https://www.moet.gov.ae/en/essential-goods-prices-platform"
-data_dir = "data"
-log_level = "INFO"
-page_size = 5000
-connect_timeout_seconds = 10
-read_timeout_seconds = 180
-max_attempts = 3

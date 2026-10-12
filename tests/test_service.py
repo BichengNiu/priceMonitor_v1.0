@@ -2,8 +2,10 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
+import duckdb
 
 from core.client import PriceRecord, SourceDataError
 from core.history import HistoryStore
@@ -20,6 +22,9 @@ class FakeClient:
         self.snapshot = snapshot
         self.version_calls = 0
         self.snapshot_calls = 0
+        self.settings = SimpleNamespace(
+            source_url="https://www.moet.gov.ae/en/essential-goods-prices-platform"
+        )
 
     def fetch_source_updated_at(self) -> datetime:
         self.version_calls += 1
@@ -37,7 +42,7 @@ def test_unchanged_version_skips_snapshot_and_panel_write(
 ) -> None:
     history = HistoryStore(tmp_path)
     initial = history.plan_observations([source_record], fixed_now)
-    history.commit(initial, [source_record], fixed_now)
+    _commit(history, initial, [source_record], fixed_now)
     panel_before = history.panel_path.read_bytes()
     client = FakeClient(fixed_now, AssertionError("full snapshot must not be called"))
     monitor = PriceMonitor(client, history)
@@ -56,7 +61,7 @@ def test_same_publication_date_is_collected_only_once(
 ) -> None:
     history = HistoryStore(tmp_path)
     initial = history.plan_observations([source_record], fixed_now)
-    history.commit(initial, [source_record], fixed_now)
+    _commit(history, initial, [source_record], fixed_now)
     panel_before = history.panel_path.read_bytes()
     later_same_date = fixed_now + timedelta(hours=8)
     client = FakeClient(
@@ -85,6 +90,14 @@ def test_changed_version_fetches_and_commits_complete_snapshot(
     assert result.appended_count == 1
     assert client.snapshot_calls == 1
     assert history.last_source_updated_at() == source_version
+    with duckdb.connect(str(history.database_path), read_only=True) as connection:
+        provenance = connection.execute(
+            "SELECT publication_date, source_updated_at, source_url "
+            "FROM collection_metadata"
+        ).fetchone()
+    assert str(provenance[0]) == source_version.date().isoformat()
+    assert provenance[1] == source_version.isoformat(timespec="seconds")
+    assert provenance[2] == client.settings.source_url
 
 
 def test_failure_returns_without_committing_new_version(
@@ -94,7 +107,7 @@ def test_failure_returns_without_committing_new_version(
     new_version = fixed_now - timedelta(days=1)
     history = HistoryStore(tmp_path)
     initial = history.plan_observations([source_record], old_version)
-    history.commit(initial, [source_record], old_version)
+    _commit(history, initial, [source_record], old_version)
     panel_before = history.panel_path.read_bytes()
     client = FakeClient(new_version, SourceDataError("source unavailable"))
     monitor = PriceMonitor(client, history)
@@ -104,3 +117,13 @@ def test_failure_returns_without_committing_new_version(
 
     assert history.last_source_updated_at() == old_version
     assert history.panel_path.read_bytes() == panel_before
+
+
+def _commit(history, observations, snapshot, source_updated_at) -> None:
+    history.commit(
+        observations,
+        snapshot,
+        source_updated_at,
+        collected_at=source_updated_at,
+        source_url="https://www.moet.gov.ae/en/essential-goods-prices-platform",
+    )

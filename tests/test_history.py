@@ -26,6 +26,16 @@ def _read_rows(path: Path) -> list[dict[str, str]]:
     return frame.to_dict("records")
 
 
+def _commit(store, observations, snapshot, source_updated_at) -> None:
+    store.commit(
+        observations,
+        snapshot,
+        source_updated_at,
+        collected_at=source_updated_at,
+        source_url="https://example.test/prices",
+    )
+
+
 def test_first_snapshot_creates_panel_observations(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
@@ -33,7 +43,7 @@ def test_first_snapshot_creates_panel_observations(
     source_updated_at = fixed_now - timedelta(days=1)
 
     observations = store.plan_observations([source_record], source_updated_at)
-    store.commit(observations, [source_record], source_updated_at)
+    _commit(store, observations, [source_record], source_updated_at)
 
     assert len(observations) == 1
     rows = _read_rows(store.panel_path)
@@ -62,13 +72,22 @@ def test_each_new_source_version_appends_a_complete_panel_period(
     first_version = fixed_now - timedelta(days=2)
     second_version = fixed_now - timedelta(days=1)
     first = store.plan_observations([source_record], first_version)
-    store.commit(first, [source_record], first_version)
+    _commit(store, first, [source_record], first_version)
 
     second = store.plan_observations([source_record], second_version)
-    store.commit(second, [source_record], second_version)
+    _commit(store, second, [source_record], second_version)
 
     assert len(second) == 1
     assert [row["publication_date"] for row in _read_rows(store.panel_path)] == [
+        first_version.date().isoformat(),
+        second_version.date().isoformat(),
+    ]
+    with duckdb.connect(str(store.database_path), read_only=True) as connection:
+        provenance = connection.execute(
+            "SELECT publication_date FROM collection_metadata "
+            "ORDER BY publication_date"
+        ).fetchall()
+    assert [str(row[0]) for row in provenance] == [
         first_version.date().isoformat(),
         second_version.date().isoformat(),
     ]
@@ -82,7 +101,8 @@ def test_panel_period_contains_only_records_present_in_snapshot(
     removed = replace(source_record, product_id="old-product", branch_id="old-branch")
     first_version = fixed_now - timedelta(days=2)
     initial_snapshot = [source_record, removed]
-    store.commit(
+    _commit(
+        store,
         store.plan_observations(initial_snapshot, first_version),
         initial_snapshot,
         first_version,
@@ -92,7 +112,7 @@ def test_panel_period_contains_only_records_present_in_snapshot(
     added = replace(source_record, product_id="new-product", branch_id="new-branch")
     second_version = fixed_now - timedelta(days=1)
     observations = store.plan_observations([changed, added], second_version)
-    store.commit(observations, [changed, added], second_version)
+    _commit(store, observations, [changed, added], second_version)
 
     assert {observation.record.key for observation in observations} == {
         source_record.key,
@@ -117,7 +137,7 @@ def test_writes_stata_panel_with_date_only_schema(
     store = HistoryStore(tmp_path)
     observations = store.plan_observations([source_record], fixed_now)
 
-    store.commit(observations, [source_record], fixed_now)
+    _commit(store, observations, [source_record], fixed_now)
 
     rows = _read_rows(store.panel_path)
     assert list(rows[0]) == PANEL_FIELDS
@@ -144,7 +164,7 @@ def test_failed_commit_is_recoverable(
     monkeypatch.setattr("core.history.os.replace", fail_panel_replace_once)
 
     with pytest.raises(OSError, match="simulated interruption"):
-        store.commit(observations, [source_record], fixed_now)
+        _commit(store, observations, [source_record], fixed_now)
 
     assert store.transaction_path.exists()
     assert store.database_path.exists()
@@ -172,7 +192,8 @@ def test_rejects_numeric_values_that_exceed_storage_precision(
     store = HistoryStore(tmp_path)
     unsupported_precision = replace(source_record, standardized_price="8.123456")
     with pytest.raises(HistoryError, match="exceeds DECIMAL"):
-        store.commit(
+        _commit(
+            store,
             store.plan_observations([unsupported_precision], fixed_now),
             [unsupported_precision],
             fixed_now,
@@ -183,7 +204,8 @@ def test_rejects_dta_only_store_instead_of_migrating_it(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
     store = HistoryStore(tmp_path)
-    store.commit(
+    _commit(
+        store,
         store.plan_observations([source_record], fixed_now), [source_record], fixed_now
     )
     store.database_path.unlink()
@@ -194,24 +216,12 @@ def test_rejects_dta_only_store_instead_of_migrating_it(
     assert store.panel_path.exists()
 
 
-@pytest.mark.parametrize("legacy_name", ["prices_panel.csv", "prices_history.csv"])
-def test_rejects_legacy_csv_without_importing_it(
-    tmp_path: Path, legacy_name: str
-) -> None:
-    store = HistoryStore(tmp_path)
-    (tmp_path / legacy_name).write_text("legacy data\n", encoding="utf-8")
-
-    with pytest.raises(HistoryError, match="Legacy CSV data is not imported automatically"):
-        store.validate_current_store()
-    assert not store.database_path.exists()
-    assert not store.panel_path.exists()
-
-
 def test_rejects_old_duckdb_types_without_rewriting_them(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
     store = HistoryStore(tmp_path)
-    store.commit(
+    _commit(
+        store,
         store.plan_observations([source_record], fixed_now), [source_record], fixed_now
     )
     select_fields = ", ".join(
@@ -236,7 +246,8 @@ def test_rejects_missing_duckdb_metadata_without_adding_it(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
     store = HistoryStore(tmp_path)
-    store.commit(
+    _commit(
+        store,
         store.plan_observations([source_record], fixed_now), [source_record], fixed_now
     )
     with duckdb.connect(str(store.database_path)) as connection:
@@ -255,7 +266,8 @@ def test_reads_source_version_from_duckdb_without_state_file(
     tmp_path: Path, source_record: PriceRecord, fixed_now
 ) -> None:
     store = HistoryStore(tmp_path)
-    store.commit(
+    _commit(
+        store,
         store.plan_observations([source_record], fixed_now), [source_record], fixed_now
     )
     assert store.last_source_updated_at() == fixed_now
@@ -268,12 +280,14 @@ def test_rejects_stale_local_stata_export_without_repair(
     store = HistoryStore(tmp_path)
     first_version = fixed_now - timedelta(days=1)
     second_version = fixed_now
-    store.commit(
+    _commit(
+        store,
         store.plan_observations([source_record], first_version),
         [source_record],
         first_version,
     )
-    store.commit(
+    _commit(
+        store,
         store.plan_observations([source_record], second_version),
         [source_record],
         second_version,

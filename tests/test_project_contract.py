@@ -69,7 +69,7 @@ def test_required_delivery_files_and_commands_are_present() -> None:
     required = {
         "README.md",
         "requirements.txt",
-        "config.example.toml",
+        "config.toml",
         "run_monitor.py",
         "run_monitor.bat",
         "build.ps1",

@@ -59,7 +59,14 @@ class PriceMonitor:
         )
         snapshot = self.client.fetch_snapshot()
         observations = self.history.plan_observations(snapshot, source_version)
-        self.history.commit(observations, snapshot, source_version)
+        collected_at = datetime.now(tz=source_version.tzinfo)
+        self.history.commit(
+            observations,
+            snapshot,
+            source_version,
+            collected_at=collected_at,
+            source_url=self.client.settings.source_url,
+        )
         LOGGER.info(
             "Committed source version %s: fetched=%s appended=%s",
             source_version.isoformat(),

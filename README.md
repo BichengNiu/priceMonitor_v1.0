@@ -22,15 +22,9 @@
 
 ## 配置和手动运行
 
-首次配置：
+项目根目录的 `config.toml` 是采集程序使用的配置。默认先用 5,000 条请求探测总量，再用一个完整响应取得同一时点快照；连接超时 10 秒、完整响应读取超时 180 秒，失败最多尝试 3 次。可编辑 `config.toml` 调整探测大小、超时、输出目录和日志级别。
 
-```powershell
-Copy-Item .\config.example.toml .\config.toml
-```
-
-默认先用 5,000 条请求探测总量，再用一个完整响应取得同一时点快照；连接超时 10 秒、完整响应读取超时 180 秒，失败最多尝试 3 次。可编辑 `config.toml` 调整探测大小、超时、输出目录和日志级别。
-
-首次使用前请先创建根目录配置并构建内部执行程序。人工更新只需双击项目根目录的 `run_monitor.bat`；计划任务也调用同一个 BAT。不要直接运行 Python 源文件或 `release\MoetPriceMonitor.exe`。
+首次使用前请确认根目录配置存在并构建内部执行程序。人工更新只需双击项目根目录的 `run_monitor.bat`；计划任务也调用同一个 BAT。不要直接运行 Python 源文件或 `release\MoetPriceMonitor.exe`。
 
 成功退出码为 `0`，失败退出码为 `1`。数据文件为：
 
@@ -38,7 +32,7 @@ Copy-Item .\config.example.toml .\config.toml
 - `data\prices_panel.dta`：Stata 118 格式本地副本，供用户使用，不纳入 GitHub；
 - `logs\monitor.log`：滚动运行日志，单文件 5 MB，保留 5 个备份。
 
-DuckDB 是主存储，DTA 是每次成功提交时同步生成的本地导出；手工修改 DTA 不会反向修改数据库。程序要求当前版本的 DuckDB 和 DTA 同时存在且结构正确，不会从旧 DTA/CSV 导入数据，不会自动升级旧数据库结构，也不会自动修复过期或不一致的 DTA。旧 CSV 不再作为运行数据源。
+DuckDB 是主存储，DTA 是每次成功提交时同步生成的本地导出；手工修改 DTA 不会反向修改数据库。程序要求当前版本的 DuckDB 和 DTA 同时存在且结构正确，不会从旧 DTA 导入数据，不会自动升级旧数据库结构，也不会自动修复过期或不一致的 DTA。
 
 每次成功运行后，程序会清理自身产生的事务临时文件、项目源码缓存、pytest 临时目录以及构建缓存目录；`data`、`logs`、`release`、配置文件和 Python 虚拟环境会保留。
 
@@ -79,7 +73,7 @@ python -m pytest -q
 
 ## 故障排查
 
-- `Configuration file not found`：确认已将 `config.example.toml` 复制为项目根目录的 `config.toml`。
+- `Configuration file not found`：确认项目根目录存在 `config.toml`。
 - 连续网络失败：检查网络后双击根目录 `run_monitor.bat` 重试；失败版本不会写入面板。
 - 网站接口或字段变化时程序会明确失败并写入日志，不会静默生成缺字段数据。
 - 计划任务失败时先看 `logs\monitor.log`，再查看 `Get-ScheduledTaskInfo` 的 `LastTaskResult`。
